@@ -70,7 +70,7 @@ class LiteRTLMProvider @Inject constructor(
      * Returns the local file path where a model should be stored / loaded from.
      */
     private fun getModelFilePath(spec: OnDeviceModelSpec): String {
-        val baseDir = context.getExternalFilesDir(null) ?: context.filesDir
+        val baseDir = context.filesDir
         val modelDir = ModelStoragePaths.modelDir(File(baseDir, "models"), spec.id)
         if (!modelDir.exists()) modelDir.mkdirs()
 

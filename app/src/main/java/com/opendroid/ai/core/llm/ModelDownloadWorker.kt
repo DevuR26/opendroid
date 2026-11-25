@@ -323,7 +323,7 @@ class ModelDownloadWorker(
     }
 
     private fun modelDirectory(spec: OnDeviceModelSpec): File {
-        val baseDir = applicationContext.getExternalFilesDir(null) ?: applicationContext.filesDir
+        val baseDir = applicationContext.filesDir
         return ModelStoragePaths.modelDir(File(baseDir, "models"), spec.id)
     }
 

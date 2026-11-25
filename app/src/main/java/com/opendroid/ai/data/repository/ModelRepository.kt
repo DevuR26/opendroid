@@ -57,7 +57,7 @@ class ModelRepository @Inject constructor(
         .onStart { initModelsInDatabase() }
 
     private fun getModelsDirectory(): File {
-        val baseDir = context.getExternalFilesDir(null) ?: context.filesDir
+        val baseDir = context.filesDir
         val modelsDir = File(baseDir, "models")
         if (!modelsDir.exists()) modelsDir.mkdirs()
         return modelsDir
