@@ -9,12 +9,11 @@ plugins {
 
 configurations.all {
     resolutionStrategy {
-        // LiteRT-LM 0.14.0 is compiled against coroutines 1.9.0 and calls
-        // SendChannel.close$default; newer coroutines remove that shim and
-        // crash the on-device inference callback with NoSuchMethodError.
-        force 'org.jetbrains.kotlinx:kotlinx-coroutines-android:1.9.0'
-        force 'org.jetbrains.kotlinx:kotlinx-coroutines-core:1.9.0'
-        force 'org.jetbrains.kotlinx:kotlinx-coroutines-core-jvm:1.9.0'
+        // LiteRT-LM 0.14.0 AAR calls interface-static SendChannel.close$default,
+        // which only exists in kotlinx-coroutines 1.11.0 (issue google-ai-edge/LiteRT-LM#2812).
+        force 'org.jetbrains.kotlinx:kotlinx-coroutines-android:1.11.0'
+        force 'org.jetbrains.kotlinx:kotlinx-coroutines-core:1.11.0'
+        force 'org.jetbrains.kotlinx:kotlinx-coroutines-core-jvm:1.11.0'
     }
 }
 
