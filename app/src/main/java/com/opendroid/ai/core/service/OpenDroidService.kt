@@ -56,6 +56,12 @@ class OpenDroidService : Service() {
         const val ACTION_TRIGGER_RECORD = "com.opendroid.ai.action.TRIGGER_RECORD"
         private const val CHANNEL_ID = "opendroid_channel"
         private const val NOTIFICATION_ID = 2024
+
+        // Always-on wake-word listening keeps the microphone open and its TTS prompts
+        // grab AUDIOFOCUS_GAIN_TRANSIENT_EXCLUSIVE, pausing other apps' playback.
+        // Voice activation is disabled here; manual voice input (in-app mic button
+        // and ACTION_TRIGGER_RECORD) is unaffected.
+        private const val VOICE_ACTIVATION_ENABLED = false
         
         fun start(context: Context) {
             val intent = Intent(context, OpenDroidService::class.java)
@@ -165,6 +171,7 @@ class OpenDroidService : Service() {
     }
 
     private fun startWakeWordDetection() {
+        if (!VOICE_ACTIVATION_ENABLED) return
         wakeWordDetector.startListening {
             // Wake word detected! Prompt user with a sound or greeting and start listing for query
             textToSpeechEngine.speak("OpenDroid online.")
@@ -184,7 +191,7 @@ class OpenDroidService : Service() {
             onResult = { query ->
                 agentLoop.processQuery(query, this)
                 // Resume wake word detection only if floating button is disabled
-                if (!showFloatingButton) {
+                if (!showFloatingButton && VOICE_ACTIVATION_ENABLED) {
                     wakeWordDetector.startListening {
                         textToSpeechEngine.speak("OpenDroid online.")
                         startListeningForQuery()
@@ -196,7 +203,7 @@ class OpenDroidService : Service() {
             onError = { _ ->
                 agentLoop.setAgentState(AgentState.Idle)
                 // Resume wake word detection only if floating button is disabled
-                if (!showFloatingButton) {
+                if (!showFloatingButton && VOICE_ACTIVATION_ENABLED) {
                     wakeWordDetector.startListening {
                         textToSpeechEngine.speak("OpenDroid online.")
                         startListeningForQuery()
@@ -221,10 +228,10 @@ class OpenDroidService : Service() {
                     VoiceApprovalIntent.REJECT -> agentLoop.rejectProposedPlan()
                     VoiceApprovalIntent.NONE -> Unit
                 }
-                if (!showFloatingButton) startWakeWordDetection()
+                if (!showFloatingButton && VOICE_ACTIVATION_ENABLED) startWakeWordDetection()
             },
             onError = { _ ->
-                if (!showFloatingButton) startWakeWordDetection()
+                if (!showFloatingButton && VOICE_ACTIVATION_ENABLED) startWakeWordDetection()
             }
         )
     }
