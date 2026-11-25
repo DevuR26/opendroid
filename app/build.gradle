@@ -1,3 +1,12 @@
+plugins {
+    id 'com.android.application'
+    id 'com.google.devtools.ksp'
+    id 'dagger.hilt.android.plugin'
+    id 'kotlinx-serialization'
+    id 'org.jetbrains.kotlin.plugin.compose'
+    id 'androidx.room'
+}
+
 configurations.all {
     resolutionStrategy {
         // LiteRT-LM 0.14.0 is compiled against coroutines 1.9.0 and calls
@@ -9,14 +18,6 @@ configurations.all {
     }
 }
 
-plugins {
-    id 'com.android.application'
-    id 'com.google.devtools.ksp'
-    id 'dagger.hilt.android.plugin'
-    id 'kotlinx-serialization'
-    id 'org.jetbrains.kotlin.plugin.compose'
-    id 'androidx.room'
-}
 
 android {
     namespace = 'com.opendroid.ai'
