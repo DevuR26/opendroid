@@ -28,7 +28,7 @@ fun HelpCenterScreen(
             TopAppBar(
                 title = {
                     Text(
-                        text = "HELP CENTER",
+                        text = "ПОМОЩЬ ЦЕНТР",
                         fontFamily = FontFamily.Monospace,
                         fontWeight = FontWeight.Bold,
                         color = TextPrimary,
@@ -81,13 +81,13 @@ fun HelpCenterScreen(
                         Spacer(modifier = Modifier.width(12.dp))
                         Column {
                             Text(
-                                text = "How can we help?",
+                                text = "Как мы можем помочь?",
                                 fontSize = 18.sp,
                                 fontWeight = FontWeight.Bold,
                                 color = TextPrimary
                             )
                             Text(
-                                text = "Quick answers to common questions",
+                                text = "Быстрые ответы на распространенные вопросы",
                                 fontSize = 12.sp,
                                 color = TextSecondary
                             )
@@ -98,18 +98,18 @@ fun HelpCenterScreen(
 
             item {
                 PolicySection(
-                    title = "GETTING STARTED",
+                    title = "НАЧАЛО РАБОТЫ",
                     content = "1. Launch OpenDroid and complete the onboarding setup\n" +
                             "2. Grant the requested permissions (microphone, accessibility, etc.)\n" +
                             "3. Go to Settings and enter your LLM provider API key\n" +
                             "4. Start talking or typing commands!\n\n" +
-                            "Tip: Google Gemini is the default provider. Get a free API key at ai.google.dev"
+                            "Совет: Google Gemini является поставщиком по умолчанию. Получите бесплатный ключ API на ai.google.dev."
                 )
             }
 
             item {
                 PolicySection(
-                    title = "VOICE COMMANDS",
+                    title = "ГОЛОСОВЫЕ КОМАНДЫ",
                     content = "OpenDroid listens for the wake word \"Hey OpenDroid\" when the app is running.\n\n" +
                             "Examples of what you can say:\n\n" +
                             "• \"Send a WhatsApp message to Mom saying I'll be late\"\n" +
@@ -124,7 +124,7 @@ fun HelpCenterScreen(
 
             item {
                 PolicySection(
-                    title = "SETTING UP API KEYS",
+                    title = "НАСТРОЙКА API-КЛЮЧЕЙ",
                     content = "OpenDroid needs an LLM API key to generate responses:\n\n" +
                             "1. Go to Settings → Provider API Keys\n" +
                             "2. Enter your API key for the provider you want to use\n" +
@@ -135,13 +135,13 @@ fun HelpCenterScreen(
                             "• Anthropic Claude\n" +
                             "• Groq (fast inference)\n" +
                             "• Mistral AI, OpenRouter, Together AI, Cohere, DeepSeek, Opencode-Go\n" +
-                            "• Ollama (fully local, no API key needed)"
+                            "• Оллама (полностью локальный, ключ API не требуется)."
                 )
             }
 
             item {
                 PolicySection(
-                    title = "ACCESSIBILITY SERVICE",
+                    title = "УСЛУГА ДОСТУПНОСТИ",
                     content = "The Accessibility Service lets OpenDroid tap buttons and type in other apps (e.g., sending WhatsApp messages automatically).\n\n" +
                             "To enable it:\n" +
                             "1. Go to Android Settings → Accessibility\n" +
@@ -153,7 +153,7 @@ fun HelpCenterScreen(
 
             item {
                 PolicySection(
-                    title = "MACROS & AUTOMATION",
+                    title = "МАКРОСЫ И АВТОМАТИЗАЦИЯ",
                     content = "You can create macros to run multiple actions in sequence:\n\n" +
                             "• Go to the Macros tab\n" +
                             "• Create a new macro with a name and list of steps\n" +
@@ -164,13 +164,13 @@ fun HelpCenterScreen(
 
             item {
                 PolicySection(
-                    title = "MEMORY SYSTEM",
+                    title = "СИСТЕМА ПАМЯТИ",
                     content = "OpenDroid has 4 types of memory:\n\n" +
                             "• Working Memory — Current session context (auto-cleared)\n" +
                             "• Episodic Memory — Conversation history\n" +
                             "• Semantic Memory — Facts about you (name, preferences)\n" +
                             "• Procedural Memory — Learned task patterns\n\n" +
-                            "You can view and clear any memory type from the Memory tab."
+                            "Вы можете просмотреть и очистить любой тип памяти на вкладке «Память»."
                 )
             }
 
@@ -184,17 +184,17 @@ fun HelpCenterScreen(
                             "\"WhatsApp messages aren't sending automatically\"\n" +
                             "→ Enable the Accessibility Service in Android Settings.\n\n" +
                             "\"App crashes on startup\"\n" +
-                            "→ Clear app data and re-enter your settings. Your API keys are encrypted and will need to be re-entered."
+                            "→ Очистите данные приложения и повторно введите настройки. Ваши ключи API зашифрованы, и их необходимо будет ввести повторно."
                 )
             }
 
             item {
                 PolicySection(
-                    title = "CONTACT & SUPPORT",
+                    title = "КОНТАКТЫ И ПОДДЕРЖКА",
                     content = "• GitHub: Report bugs and request features at github.com/JMAN730/opendroid\n" +
                             "• Discord: Join our community for live help and discussion\n" +
                             "• Security: Report vulnerabilities privately at github.com/JMAN730/opendroid/security/advisories/new, not in public issues or Discord\n\n" +
-                            "OpenDroid is open-source and community-driven. We welcome contributions!"
+                            "OpenDroid имеет открытый исходный код и поддерживается сообществом. Мы приветствуем вклады!"
                 )
             }
         }

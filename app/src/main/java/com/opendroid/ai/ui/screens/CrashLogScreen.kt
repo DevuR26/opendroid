@@ -55,26 +55,26 @@ fun CrashLogScreen(
     fun share(text: String) {
         val intent = Intent(Intent.ACTION_SEND).apply {
             type = "text/plain"
-            putExtra(Intent.EXTRA_SUBJECT, "OpenDroid crash report")
+            putExtra(Intent.EXTRA_SUBJECT, "Отчет о сбое OpenDroid")
             putExtra(Intent.EXTRA_TEXT, text)
         }
-        context.startActivity(Intent.createChooser(intent, "Share crash report"))
+        context.startActivity(Intent.createChooser(intent, "Поделиться отчетом о сбое"))
     }
 
     fun copy(text: String) {
         val clipboard = context.getSystemService(Context.CLIPBOARD_SERVICE) as ClipboardManager
-        clipboard.setPrimaryClip(ClipData.newPlainText("OpenDroid crash report", text))
+        clipboard.setPrimaryClip(ClipData.newPlainText("Отчет о сбое OpenDroid", text))
         // Android 13+ shows its own copy confirmation; a Toast there would double up.
         if (Build.VERSION.SDK_INT < Build.VERSION_CODES.TIRAMISU) {
-            Toast.makeText(context, "Crash report copied", Toast.LENGTH_SHORT).show()
+            Toast.makeText(context, "Отчет о сбое скопирован.", Toast.LENGTH_SHORT).show()
         }
     }
 
     if (showClearConfirmation) {
         AlertDialog(
             onDismissRequest = { showClearConfirmation = false },
-            title = { Text("Delete all crash reports?") },
-            text = { Text("This removes every stored crash report from this device. It cannot be undone.") },
+            title = { Text("Удалить все отчеты о сбоях?") },
+            text = { Text("При этом с этого устройства будут удалены все сохраненные отчеты о сбоях. Это невозможно отменить.") },
             confirmButton = {
                 TextButton(onClick = {
                     viewModel.clearAll()
@@ -108,7 +108,7 @@ fun CrashLogScreen(
                     ) {
                         Icon(
                             Icons.Default.Share,
-                            contentDescription = "Share all crash reports",
+                            contentDescription = "Поделитесь всеми отчетами о сбоях",
                             tint = if (crashes.isEmpty()) {
                                 themeColors.textSecondary.copy(alpha = 0.4f)
                             } else {
@@ -122,7 +122,7 @@ fun CrashLogScreen(
                     ) {
                         Icon(
                             Icons.Default.Delete,
-                            contentDescription = "Delete all crash reports",
+                            contentDescription = "Удалить все отчеты о сбоях",
                             tint = if (crashes.isEmpty()) {
                                 themeColors.textSecondary.copy(alpha = 0.4f)
                             } else {
@@ -152,13 +152,13 @@ fun CrashLogScreen(
                     Text("✅", fontSize = 48.sp)
                     Spacer(modifier = Modifier.height(12.dp))
                     Text(
-                        "No crashes recorded",
+                        "Сбоев не зафиксировано",
                         fontSize = 16.sp,
                         color = themeColors.textSecondary
                     )
                     Spacer(modifier = Modifier.height(4.dp))
                     Text(
-                        "Crashes are captured automatically and kept on this device.",
+                        "Сбои фиксируются автоматически и сохраняются на этом устройстве.",
                         fontSize = 13.sp,
                         color = themeColors.textSecondary.copy(alpha = 0.6f)
                     )
@@ -196,7 +196,7 @@ private fun CrashCard(
     onCopy: () -> Unit,
     themeColors: OpenDroidColors
 ) {
-    val dateFormat = remember { SimpleDateFormat("MMM d, yyyy HH:mm:ss", Locale.getDefault()) }
+    val dateFormat = remember { SimpleDateFormat("МММ д, гггг ЧЧ:мм:сс", Locale.getDefault()) }
     val timeText = dateFormat.format(Date(crash.timestamp))
 
     Card(

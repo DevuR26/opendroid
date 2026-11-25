@@ -104,7 +104,7 @@ fun AboutScreen(
                             // transparent padding overflows into the Box's circle clip.
                             Image(
                                 painter = painterResource(id = R.drawable.bot),
-                                contentDescription = "OpenDroid app icon",
+                                contentDescription = "Значок приложения OpenDroid",
                                 modifier = Modifier.requiredSize(150.dp)
                             )
                         }
@@ -122,7 +122,7 @@ fun AboutScreen(
                         Spacer(modifier = Modifier.height(4.dp))
 
                         Text(
-                            text = "Autonomous AI Agent for Android",
+                            text = "Автономный AI-агент для Android",
                             fontSize = 14.sp,
                             color = AccentCyan,
                             fontWeight = FontWeight.Medium
@@ -150,7 +150,7 @@ fun AboutScreen(
                 ) {
                     Column(modifier = Modifier.padding(16.dp)) {
                         Text(
-                            text = "WHAT IS OPENDROID?",
+                            text = "Что такое Опендроид?",
                             fontSize = 11.sp,
                             fontWeight = FontWeight.Bold,
                             fontFamily = FontFamily.Monospace,
@@ -163,7 +163,7 @@ fun AboutScreen(
                                     "virtually any task on your phone — from sending messages and making calls to controlling " +
                                     "system settings and managing files.\n\n" +
                                     "Powered by your choice of LLM provider (Gemini, OpenAI, Claude, Groq, local Ollama, and more), " +
-                                    "OpenDroid combines intelligent planning with real device automation through Android's Accessibility framework.",
+                                    "OpenDroid сочетает в себе интеллектуальное планирование с реальной автоматизацией устройств с помощью платформы специальных возможностей Android.",
                             fontSize = 13.sp,
                             color = TextPrimary,
                             lineHeight = 20.sp
@@ -182,7 +182,7 @@ fun AboutScreen(
                 ) {
                     Column(modifier = Modifier.padding(16.dp)) {
                         Text(
-                            text = "KEY CAPABILITIES",
+                            text = "КЛЮЧЕВЫЕ ВОЗМОЖНОСТИ",
                             fontSize = 11.sp,
                             fontWeight = FontWeight.Bold,
                             fontFamily = FontFamily.Monospace,
@@ -190,14 +190,14 @@ fun AboutScreen(
                         )
                         Spacer(modifier = Modifier.height(12.dp))
 
-                        FeatureItem(Icons.Default.Chat, "Natural Language Control", "Speak or type commands in plain English")
-                        FeatureItem(Icons.Default.List, "Multi-Step Planning", "Automatically breaks complex tasks into executable steps")
-                        FeatureItem(Icons.Default.Star, "Persistent Memory", "Remembers your preferences across sessions")
-                        FeatureItem(Icons.Default.Build, "Custom Macros", "Record and replay complex workflows")
-                        FeatureItem(Icons.Default.Accessibility, "App Automation", "Controls other apps via Accessibility Service")
-                        FeatureItem(Icons.Default.Settings, "System Control", "WiFi, Bluetooth, flashlight, volume, and more")
-                        FeatureItem(Icons.Default.Call, "Communication", "WhatsApp, calls, SMS, email — hands-free")
-                        FeatureItem(Icons.Default.Lock, "Privacy-First", "All data stays on your device")
+                        FeatureItem(Icons.Default.Chat, "Контроль естественного языка", "Говорите или вводите команды на простом английском языке")
+                        FeatureItem(Icons.Default.List, "Многоэтапное планирование", "Автоматически разбивает сложные задачи на выполнимые шаги.")
+                        FeatureItem(Icons.Default.Star, "Постоянная память", "Запоминает ваши предпочтения во время сеансов")
+                        FeatureItem(Icons.Default.Build, "Пользовательские макросы", "Записывайте и воспроизводите сложные рабочие процессы")
+                        FeatureItem(Icons.Default.Accessibility, "Автоматизация приложений", "Управляет другими приложениями через службу специальных возможностей.")
+                        FeatureItem(Icons.Default.Settings, "Управление системой", "Wi-Fi, Bluetooth, фонарик, громкость и многое другое.")
+                        FeatureItem(Icons.Default.Call, "Communication", "WhatsApp, звонки, SMS, электронная почта — громкая связь")
+                        FeatureItem(Icons.Default.Lock, "Privacy-First", "Все данные остаются на вашем устройстве")
                     }
                 }
             }
@@ -212,7 +212,7 @@ fun AboutScreen(
                 ) {
                     Column(modifier = Modifier.padding(16.dp)) {
                         Text(
-                            text = "TECHNOLOGY STACK",
+                            text = "СТЕК ТЕХНОЛОГИЙ",
                             fontSize = 11.sp,
                             fontWeight = FontWeight.Bold,
                             fontFamily = FontFamily.Monospace,
@@ -221,11 +221,11 @@ fun AboutScreen(
                         Spacer(modifier = Modifier.height(12.dp))
 
                         TechItem("Language", "Kotlin")
-                        TechItem("UI Framework", "Jetpack Compose + Material 3")
-                        TechItem("Architecture", "MVVM + Hilt DI")
-                        TechItem("Database", "Room (SQLite)")
-                        TechItem("AI Integration", "Multi-provider LLM support")
-                        TechItem("Automation", "Android Accessibility Service")
+                        TechItem("Платформа пользовательского интерфейса", "Состав реактивного ранца + Материал 3")
+                        TechItem("Architecture", "МВВМ + Рукоять DI")
+                        TechItem("Database", "Комната (SQLite)")
+                        TechItem("Интеграция ИИ", "Поддержка LLM от нескольких поставщиков")
+                        TechItem("Automation", "Служба специальных возможностей Android")
                         TechItem("Async", "Kotlin Coroutines + Flow")
                         TechItem("Serialization", "kotlinx.serialization")
                     }
@@ -242,7 +242,7 @@ fun AboutScreen(
                 ) {
                     Column(modifier = Modifier.padding(16.dp)) {
                         Text(
-                            text = "SUPPORTED LLM PROVIDERS",
+                            text = "ПОДДЕРЖИВАЕМЫЕ ПОСТАВЩИКИ LLM",
                             fontSize = 11.sp,
                             fontWeight = FontWeight.Bold,
                             fontFamily = FontFamily.Monospace,
@@ -251,9 +251,9 @@ fun AboutScreen(
                         Spacer(modifier = Modifier.height(12.dp))
 
                         val providers = listOf(
-                            "Google Gemini", "OpenAI (GPT-4o, etc.)", "Anthropic Claude",
-                            "Groq", "Mistral AI", "OpenRouter", "Together AI",
-                            "Cohere", "DeepSeek", "Copilot API", "Opencode-Go", "Ollama (Local)"
+                            "Гугл Близнецы", "OpenAI (GPT-4o и т. д.)", "Антропный Клод",
+                            "Groq", "Мистраль ИИ", "OpenRouter", "Вместе ИИ",
+                            "Cohere", "DeepSeek", "API второго пилота", "Opencode-Go", "Оллама (местный)"
                         )
                         providers.forEach { provider ->
                             Row(
@@ -293,7 +293,7 @@ fun AboutScreen(
                         horizontalAlignment = Alignment.CenterHorizontally
                     ) {
                         Text(
-                            text = "OPEN SOURCE",
+                            text = "ОТКРЫТЫЙ ИСТОЧНИК",
                             fontSize = 11.sp,
                             fontWeight = FontWeight.Bold,
                             fontFamily = FontFamily.Monospace,
@@ -301,7 +301,7 @@ fun AboutScreen(
                         )
                         Spacer(modifier = Modifier.height(10.dp))
                         Text(
-                            text = "OpenDroid is open source software. Contributions, bug reports, and feature requests are welcome.",
+                            text = "OpenDroid — программное обеспечение с открытым исходным кодом. Вклады, отчеты об ошибках и пожелания по функциям приветствуются.",
                             fontSize = 13.sp,
                             color = TextPrimary,
                             textAlign = TextAlign.Center,
@@ -322,7 +322,7 @@ fun AboutScreen(
             // Footer
             item {
                 Text(
-                    text = "Made with ❤ for the Android community",
+                    text = "Сделано с ❤ для сообщества Android",
                     fontSize = 12.sp,
                     color = TextSecondary,
                     textAlign = TextAlign.Center,

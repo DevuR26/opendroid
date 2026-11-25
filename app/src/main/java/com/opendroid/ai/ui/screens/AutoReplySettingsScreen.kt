@@ -63,7 +63,7 @@ fun AutoReplySettingsScreen(
     Scaffold(
         topBar = {
             TopAppBar(
-                title = { Text("Auto-Reply Settings", fontWeight = FontWeight.Bold) },
+                title = { Text("Настройки автоответа", fontWeight = FontWeight.Bold) },
                 navigationIcon = {
                     IconButton(onClick = onBack) {
                         Icon(Icons.Default.ArrowBack, contentDescription = "Back")
@@ -103,7 +103,7 @@ fun AutoReplySettingsScreen(
                     ) {
                         Column(modifier = Modifier.padding(16.dp)) {
                             Text(
-                                text = "SYSTEM PERMISSIONS REQUIRED",
+                                text = "ТРЕБУЮТСЯ СИСТЕМНЫЕ РАЗРЕШЕНИЯ",
                                 fontSize = 11.sp,
                                 fontWeight = FontWeight.Bold,
                                 color = themeColors.accentRed,
@@ -111,7 +111,7 @@ fun AutoReplySettingsScreen(
                             )
                             Spacer(modifier = Modifier.height(6.dp))
                             Text(
-                                text = "Auto-Reply needs notification access to monitor incoming messages and accessibility access to automate typing & sending replies.",
+                                text = "Для функции «Автоответчик» требуется доступ к уведомлениям для отслеживания входящих сообщений и доступ к специальным возможностям для автоматизации ввода и отправки ответов.",
                                 fontSize = 13.sp,
                                 color = themeColors.textPrimary
                             )
@@ -133,7 +133,7 @@ fun AutoReplySettingsScreen(
                                         colors = ButtonDefaults.buttonColors(containerColor = themeColors.accentRed),
                                         modifier = Modifier.weight(1f)
                                     ) {
-                                        Text("Grant Notification Access", fontSize = 10.sp, color = Color.White)
+                                        Text("Предоставить доступ к уведомлениям", fontSize = 10.sp, color = Color.White)
                                     }
                                 }
                                 if (!isAccessibilityPermissionGranted) {
@@ -148,7 +148,7 @@ fun AutoReplySettingsScreen(
                                         colors = ButtonDefaults.buttonColors(containerColor = themeColors.accentPurple),
                                         modifier = Modifier.weight(1f)
                                     ) {
-                                        Text("Grant Accessibility Access", fontSize = 10.sp, color = Color.White)
+                                        Text("Предоставить доступ к специальным возможностям", fontSize = 10.sp, color = Color.White)
                                     }
                                 }
                             }
@@ -187,7 +187,7 @@ fun AutoReplySettingsScreen(
                             Spacer(modifier = Modifier.height(4.dp))
                             Text(
                                 if (config.globalEnabled) "AI will auto-reply to messages after ${config.replyDelayMinutes} minutes"
-                                else "Auto-reply is disabled",
+                                else "Автоответ отключен",
                                 fontSize = 13.sp,
                                 color = themeColors.textSecondary
                             )
@@ -206,7 +206,7 @@ fun AutoReplySettingsScreen(
                 if (config.globalEnabled) {
                     // Per-App Toggles
                     Text(
-                        "Enabled Apps",
+                        "Включенные приложения",
                         fontSize = 15.sp,
                         fontWeight = FontWeight.SemiBold,
                         color = themeColors.textPrimary
@@ -244,7 +244,7 @@ fun AutoReplySettingsScreen(
 
                     // Reply Delay Slider
                     Text(
-                        "Reply Delay",
+                        "Задержка ответа",
                         fontSize = 15.sp,
                         fontWeight = FontWeight.SemiBold,
                         color = themeColors.textPrimary
@@ -263,12 +263,12 @@ fun AutoReplySettingsScreen(
                                 horizontalArrangement = Arrangement.SpaceBetween
                             ) {
                                 Text(
-                                    "Wait before replying",
+                                    "Подождите, прежде чем ответить",
                                     fontSize = 14.sp,
                                     color = themeColors.textSecondary
                                 )
                                 Text(
-                                    if (config.replyDelayMinutes <= 0) "Immediately (0 sec)"
+                                    if (config.replyDelayMinutes <= 0) "Немедленно (0 секунд)"
                                     else "${config.replyDelayMinutes} minutes",
                                     fontSize = 14.sp,
                                     fontWeight = FontWeight.Bold,
@@ -292,7 +292,7 @@ fun AutoReplySettingsScreen(
                                 modifier = Modifier.fillMaxWidth(),
                                 horizontalArrangement = Arrangement.SpaceBetween
                             ) {
-                                Text("0 sec (Instant)", fontSize = 12.sp, color = themeColors.textSecondary.copy(alpha = 0.6f))
+                                Text("0 секунд (мгновенно)", fontSize = 12.sp, color = themeColors.textSecondary.copy(alpha = 0.6f))
                                 Text("60 min", fontSize = 12.sp, color = themeColors.textSecondary.copy(alpha = 0.6f))
                             }
                         }
@@ -300,7 +300,7 @@ fun AutoReplySettingsScreen(
 
                     // Rate Limit
                     Text(
-                        "Rate Limit",
+                        "Ограничение скорости",
                         fontSize = 15.sp,
                         fontWeight = FontWeight.SemiBold,
                         color = themeColors.textPrimary
@@ -319,7 +319,7 @@ fun AutoReplySettingsScreen(
                                 horizontalArrangement = Arrangement.SpaceBetween
                             ) {
                                 Text(
-                                    "Max replies per contact/hour",
+                                    "Максимальное количество ответов на контакт/час",
                                     fontSize = 14.sp,
                                     color = themeColors.textSecondary
                                 )
@@ -348,7 +348,7 @@ fun AutoReplySettingsScreen(
 
                     // Custom Prompt & Direct Reply
                     Text(
-                        "Reply Content",
+                        "Содержание ответа",
                         fontSize = 15.sp,
                         fontWeight = FontWeight.SemiBold,
                         color = themeColors.textPrimary
@@ -363,13 +363,13 @@ fun AutoReplySettingsScreen(
                     ) {
                         Column(modifier = Modifier.padding(20.dp)) {
                             Text(
-                                "Direct custom reply text (optional)",
+                                "Текст прямого ответа (необязательно)",
                                 fontSize = 14.sp,
                                 color = themeColors.textSecondary
                             )
                             Spacer(modifier = Modifier.height(4.dp))
                             Text(
-                                "When set, this exact text will be sent instead of generating an AI reply.",
+                                "Если установлено, именно этот текст будет отправлен вместо генерации ответа AI.",
                                 fontSize = 12.sp,
                                 color = themeColors.textSecondary.copy(alpha = 0.7f)
                             )
@@ -382,7 +382,7 @@ fun AutoReplySettingsScreen(
                                 modifier = Modifier.fillMaxWidth(),
                                 placeholder = {
                                     Text(
-                                        "e.g., I'm currently driving. I'll get back to you soon!",
+                                        "например, я сейчас за рулем. Я скоро вернусь к вам!",
                                         color = themeColors.textSecondary.copy(alpha = 0.5f)
                                     )
                                 },
@@ -400,7 +400,7 @@ fun AutoReplySettingsScreen(
                             Spacer(modifier = Modifier.height(16.dp))
 
                             Text(
-                                "Custom reply style (optional)",
+                                "Пользовательский стиль ответа (необязательно)",
                                 fontSize = 14.sp,
                                 color = themeColors.textSecondary
                             )
@@ -413,7 +413,7 @@ fun AutoReplySettingsScreen(
                                 modifier = Modifier.fillMaxWidth(),
                                 placeholder = {
                                     Text(
-                                        "e.g., casual and friendly, use emojis",
+                                        "например, непринужденно и дружелюбно, используйте смайлы",
                                         color = themeColors.textSecondary.copy(alpha = 0.5f)
                                     )
                                 },

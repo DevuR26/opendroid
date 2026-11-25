@@ -51,7 +51,7 @@ import java.util.Date
 import java.util.Locale
 
 enum class MemoryScreenTab(val title: String) {
-    GROWTH_GRAPH("GROWTH GRAPH"),
+    GROWTH_GRAPH("ГРАФИК РОСТА"),
     SEMANTIC("LONG-TERM"),
     WORKING("TEMPORARY"),
     EPISODIC("EPISODIC"),
@@ -76,7 +76,7 @@ fun MemoryScreen(
             TopAppBar(
                 title = {
                     Text(
-                        text = "PERSONAL MEMORY",
+                        text = "ЛИЧНАЯ ПАМЯТЬ",
                         fontFamily = FontFamily.Monospace,
                         fontWeight = FontWeight.Bold,
                         color = TextPrimary,
@@ -94,7 +94,7 @@ fun MemoryScreen(
                             MemoryScreenTab.PROCEDURAL -> viewModel.clearMemories(MemoryType.PROCEDURAL)
                         }
                     }) {
-                        Text("Wipe Category", color = AccentRed, fontSize = 12.sp)
+                        Text("Очистить категорию", color = AccentRed, fontSize = 12.sp)
                     }
                 },
                 colors = TopAppBarDefaults.topAppBarColors(containerColor = DarkBackground)
@@ -150,10 +150,10 @@ fun MemoryScreen(
                         onValueChange = { searchQuery = it },
                         placeholder = {
                             val hint = when (selectedTab) {
-                                MemoryScreenTab.GROWTH_GRAPH -> "Search Knowledge Graph..."
-                                MemoryScreenTab.EPISODIC -> "Search conversation logs..."
-                                MemoryScreenTab.PROCEDURAL -> "Search macros..."
-                                else -> "Search facts..."
+                                MemoryScreenTab.GROWTH_GRAPH -> "Поиск в сети знаний..."
+                                MemoryScreenTab.EPISODIC -> "Поиск в журналах разговоров..."
+                                MemoryScreenTab.PROCEDURAL -> "Поиск макросов..."
+                                else -> "Искать факты..."
                             }
                             Text(hint, color = TextSecondary, fontSize = 13.sp)
                         },
@@ -176,7 +176,7 @@ fun MemoryScreen(
                                 .clip(RoundedCornerShape(8.dp))
                                 .background(TextPrimary)
                         ) {
-                            Icon(Icons.Default.Add, contentDescription = "Add Memory", tint = DarkBackground)
+                            Icon(Icons.Default.Add, contentDescription = "Добавить память", tint = DarkBackground)
                         }
                     }
                 }
@@ -238,7 +238,7 @@ fun WorkingMemoryView(viewModel: MemoryViewModel) {
             ) {
                 Column(modifier = Modifier.padding(16.dp)) {
                     Text(
-                        text = "ACTIVE ENVIRONMENT STATE",
+                        text = "АКТИВНОЕ СОСТОЯНИЕ СРЕДЫ",
                         fontSize = 11.sp,
                         fontWeight = FontWeight.Bold,
                         fontFamily = FontFamily.Monospace,
@@ -251,8 +251,8 @@ fun WorkingMemoryView(viewModel: MemoryViewModel) {
                         modifier = Modifier.fillMaxWidth(),
                         horizontalArrangement = Arrangement.SpaceBetween
                     ) {
-                        StateItem("Battery Level", "${workingMemory.batteryLevel}%", AccentCyan)
-                        StateItem("WiFi State", workingMemory.wifiState, if (workingMemory.wifiState == "Active") AccentCyan else if (workingMemory.wifiState == "Inactive") AccentRed else TextSecondary)
+                        StateItem("Уровень заряда батареи", "${workingMemory.batteryLevel}%", AccentCyan)
+                        StateItem("Состояние Wi-Fi", workingMemory.wifiState, if (workingMemory.wifiState == "Active") AccentCyan else if (workingMemory.wifiState == "Inactive") AccentRed else TextSecondary)
                     }
                     Spacer(modifier = Modifier.height(12.dp))
                     Row(
@@ -260,7 +260,7 @@ fun WorkingMemoryView(viewModel: MemoryViewModel) {
                         horizontalArrangement = Arrangement.SpaceBetween
                     ) {
                         StateItem("Connectivity", workingMemory.connectivity, AccentCyan)
-                        StateItem("Internet", if (workingMemory.isInternetAvailable) "Available" else "NOT AVAILABLE", if (workingMemory.isInternetAvailable) AccentCyan else AccentRed)
+                        StateItem("Internet", if (workingMemory.isInternetAvailable) "Available" else "НЕ ДОСТУПНО", if (workingMemory.isInternetAvailable) AccentCyan else AccentRed)
                     }
                     Spacer(modifier = Modifier.height(12.dp))
                     Row(
@@ -268,7 +268,7 @@ fun WorkingMemoryView(viewModel: MemoryViewModel) {
                         horizontalArrangement = Arrangement.SpaceBetween
                     ) {
                         key(resolvedLocation) {
-                            StateItem("Location Context", workingMemory.locationContext, TextSecondary)
+                            StateItem("Контекст местоположения", workingMemory.locationContext, TextSecondary)
                         }
                     }
                 }
@@ -285,7 +285,7 @@ fun WorkingMemoryView(viewModel: MemoryViewModel) {
             ) {
                 Column(modifier = Modifier.padding(16.dp)) {
                     Text(
-                        text = "ACTIVE PLAN MONITOR",
+                        text = "АКТИВНЫЙ ПЛАН МОНИТОР",
                         fontSize = 11.sp,
                         fontWeight = FontWeight.Bold,
                         fontFamily = FontFamily.Monospace,
@@ -390,7 +390,7 @@ fun WorkingMemoryView(viewModel: MemoryViewModel) {
                             contentAlignment = Alignment.Center
                         ) {
                             Text(
-                                text = "No active autonomous plan running.",
+                                text = "Ни один активный автономный план не работает.",
                                 color = TextSecondary,
                                 fontSize = 12.sp,
                                 fontFamily = FontFamily.Monospace
@@ -411,7 +411,7 @@ fun WorkingMemoryView(viewModel: MemoryViewModel) {
             ) {
                 Column(modifier = Modifier.padding(16.dp)) {
                     Text(
-                        text = "WORKING SESSION HISTORY (LAST 20)",
+                        text = "ИСТОРИЯ РАБОЧИХ СЕССИЙ (ПОСЛЕДНИЕ 20)",
                         fontSize = 11.sp,
                         fontWeight = FontWeight.Bold,
                         fontFamily = FontFamily.Monospace,
@@ -463,7 +463,7 @@ fun WorkingMemoryView(viewModel: MemoryViewModel) {
                             contentAlignment = Alignment.Center
                         ) {
                             Text(
-                                text = "No messages in current working session.",
+                                text = "В текущем рабочем сеансе сообщений нет.",
                                 color = TextSecondary,
                                 fontSize = 12.sp,
                                 fontFamily = FontFamily.Monospace
@@ -488,7 +488,7 @@ fun StateItem(label: String, value: String, valueColor: Color) {
 @Composable
 fun EpisodicMemoryView(viewModel: MemoryViewModel, searchQuery: String) {
     val conversations by viewModel.conversationHistory.collectAsState()
-    val dateFormat = remember { SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.getDefault()) }
+    val dateFormat = remember { SimpleDateFormat("гггг-ММ-дд ЧЧ:мм:сс", Locale.getDefault()) }
 
     val filteredLogs = conversations.filter {
         it.text.contains(searchQuery, ignoreCase = true) ||
@@ -561,7 +561,7 @@ fun EpisodicMemoryView(viewModel: MemoryViewModel, searchQuery: String) {
             contentAlignment = Alignment.Center
         ) {
             Text(
-                text = "No episodic chat logs recorded.",
+                text = "Журналы эпизодических чатов не записываются.",
                 color = TextSecondary,
                 fontSize = 12.sp,
                 fontFamily = FontFamily.Monospace
@@ -601,7 +601,7 @@ fun SemanticMemoryView(
             ) {
                 Column(modifier = Modifier.padding(16.dp)) {
                     Text(
-                        text = "STORE NEW MEMORY FACT",
+                        text = "СОХРАНИТЕ НОВЫЙ ФАКТ ПАМЯТИ",
                         fontSize = 11.sp,
                         fontWeight = FontWeight.Bold,
                         fontFamily = FontFamily.Monospace,
@@ -611,7 +611,7 @@ fun SemanticMemoryView(
                     OutlinedTextField(
                         value = newKey,
                         onValueChange = onNewKeyChange,
-                        label = { Text("Fact Key/Identifier", fontSize = 12.sp) },
+                        label = { Text("Ключ факта/идентификатор", fontSize = 12.sp) },
                         singleLine = true,
                         colors = OutlinedTextFieldDefaults.colors(
                             focusedBorderColor = AccentCyan,
@@ -625,7 +625,7 @@ fun SemanticMemoryView(
                     OutlinedTextField(
                         value = newValue,
                         onValueChange = onNewValueChange,
-                        label = { Text("Fact Content/Details", fontSize = 12.sp) },
+                        label = { Text("Факты/Детали", fontSize = 12.sp) },
                         colors = OutlinedTextFieldDefaults.colors(
                             focusedBorderColor = AccentCyan,
                             unfocusedBorderColor = BorderColor,
@@ -682,7 +682,7 @@ fun SemanticMemoryView(
                 contentAlignment = Alignment.Center
             ) {
                 Text(
-                    text = "No semantic facts indexed in this category.",
+                    text = "В этой категории нет семантических фактов.",
                     color = TextSecondary,
                     fontSize = 13.sp,
                     fontFamily = FontFamily.Monospace
@@ -697,7 +697,7 @@ fun MemoryItemCard(
     memory: Memory,
     onDelete: () -> Unit
 ) {
-    val dateFormat = remember { SimpleDateFormat("yyyy-MM-dd HH:mm", Locale.getDefault()) }
+    val dateFormat = remember { SimpleDateFormat("гггг-ММ-дд ЧЧ:мм", Locale.getDefault()) }
 
     Card(
         modifier = Modifier
@@ -737,7 +737,7 @@ fun MemoryItemCard(
             IconButton(onClick = onDelete) {
                 Icon(
                     imageVector = Icons.Default.Delete,
-                    contentDescription = "Delete Memory",
+                    contentDescription = "Удалить память",
                     tint = TextSecondary.copy(alpha = 0.6f)
                 )
             }
@@ -807,7 +807,7 @@ fun ProceduralMemoryView(viewModel: MemoryViewModel, searchQuery: String) {
                             )
                             Spacer(modifier = Modifier.height(8.dp))
                             Text(
-                                text = "PROCEDURAL ACTIONS:",
+                                text = "ПРОЦЕССУАЛЬНЫЕ ДЕЙСТВИЯ:",
                                 fontSize = 9.sp,
                                 fontWeight = FontWeight.Bold,
                                 color = AccentCyan,
@@ -838,7 +838,7 @@ fun ProceduralMemoryView(viewModel: MemoryViewModel, searchQuery: String) {
                             IconButton(onClick = { viewModel.deleteMacro(macro.id) }) {
                                 Icon(
                                     imageVector = Icons.Default.Delete,
-                                    contentDescription = "Delete Macro",
+                                    contentDescription = "Удалить макрос",
                                     tint = AccentRed.copy(alpha = 0.8f)
                                 )
                             }
@@ -853,7 +853,7 @@ fun ProceduralMemoryView(viewModel: MemoryViewModel, searchQuery: String) {
             contentAlignment = Alignment.Center
         ) {
             Text(
-                text = "No custom macros or procedures registered.",
+                text = "Никакие пользовательские макросы или процедуры не зарегистрированы.",
                 color = TextSecondary,
                 fontSize = 12.sp,
                 fontFamily = FontFamily.Monospace
@@ -920,10 +920,10 @@ fun KnowledgeGraphView(
             items(MemoryTier.values()) { tier ->
                 val count = allNodes.count { it.tier == tier }
                 val (label, icon) = when (tier) {
-                    MemoryTier.TEMPORARY -> "Level 1: Temp" to "⚡"
-                    MemoryTier.LONG_TERM -> "Level 2: Long-Term" to "🧠"
-                    MemoryTier.LEARNED_PATTERN -> "Level 3: Patterns" to "📈"
-                    MemoryTier.SENSITIVE -> "Level 4: Sensitive" to "🔒"
+                    MemoryTier.TEMPORARY -> "Уровень 1: Температура" to "⚡"
+                    MemoryTier.LONG_TERM -> "Уровень 2: Долгосрочный" to "🧠"
+                    MemoryTier.LEARNED_PATTERN -> "Уровень 3: Узоры" to "📈"
+                    MemoryTier.SENSITIVE -> "Уровень 4: Чувствительный" to "🔒"
                 }
                 FilterChip(
                     selected = selectedTierFilter == tier,
@@ -955,7 +955,7 @@ fun KnowledgeGraphView(
                 FilterChip(
                     selected = selectedCategoryFilter == null,
                     onClick = { selectedCategoryFilter = null },
-                    label = { Text("All Categories", fontSize = 10.sp) },
+                    label = { Text("Все категории", fontSize = 10.sp) },
                     colors = FilterChipDefaults.filterChipColors(
                         selectedContainerColor = TextPrimary.copy(alpha = 0.2f),
                         selectedLabelColor = TextPrimary,
@@ -1008,7 +1008,7 @@ fun KnowledgeGraphView(
             TextButton(onClick = { isAddingKnowledge = !isAddingKnowledge }) {
                 Icon(Icons.Default.Add, contentDescription = null, tint = TextPrimary, modifier = Modifier.size(16.dp))
                 Spacer(modifier = Modifier.width(4.dp))
-                Text(if (isAddingKnowledge) "Close" else "Add Entity / Secret", color = TextPrimary, fontSize = 11.sp)
+                Text(if (isAddingKnowledge) "Close" else "Добавить сущность/секрет", color = TextPrimary, fontSize = 11.sp)
             }
         }
 
@@ -1036,7 +1036,7 @@ fun KnowledgeGraphView(
                         }
                     }
                     Text(
-                        text = if (addIsSensitive) "ADD LEVEL 4 ENCRYPTED SECRET" else "ADD LEVEL 2 LONG-TERM KNOWLEDGE",
+                        text = if (addIsSensitive) "ДОБАВИТЬ ЗАШИФРОВАННЫЙ СЕКРЕТ 4 УРОВНЯ" else "ДОБАВИТЬ УРОВЕНЬ 2 ДОЛГОСРОЧНЫХ ЗНАНИЙ",
                         fontSize = 11.sp,
                         fontWeight = FontWeight.Bold,
                         fontFamily = FontFamily.Monospace,
@@ -1047,20 +1047,20 @@ fun KnowledgeGraphView(
                         FilterChip(
                             selected = !addIsSensitive,
                             onClick = { addIsSensitive = false },
-                            label = { Text("🧠 Long-Term Memory", fontSize = 11.sp) }
+                            label = { Text("🧠Долговременная память", fontSize = 11.sp) }
                         )
                         Spacer(modifier = Modifier.width(8.dp))
                         FilterChip(
                             selected = addIsSensitive,
                             onClick = { addIsSensitive = true },
-                            label = { Text("🔒 Keystore Encrypted", fontSize = 11.sp) }
+                            label = { Text("🔒 Хранилище ключей зашифровано", fontSize = 11.sp) }
                         )
                     }
                     Spacer(modifier = Modifier.height(8.dp))
                     OutlinedTextField(
                         value = newLabel,
                         onValueChange = { newLabel = it },
-                        label = { Text(if (addIsSensitive) "Secret Key / Label (e.g. locker_code)" else "Label / Title (e.g. Favorite Coffee)", fontSize = 12.sp) },
+                        label = { Text(if (addIsSensitive) "Секретный ключ/метка (например, locker_code)" else "Этикетка/название (например, «Любимый кофе»)", fontSize = 12.sp) },
                         singleLine = true,
                         colors = OutlinedTextFieldDefaults.colors(
                             focusedBorderColor = if (addIsSensitive) AccentOrange else AccentCyan,
@@ -1075,7 +1075,7 @@ fun KnowledgeGraphView(
                     OutlinedTextField(
                         value = newSummary,
                         onValueChange = { newSummary = it },
-                        label = { Text(if (addIsSensitive) "Secret Value (Hardware Encrypted)" else "Details / Description", fontSize = 12.sp) },
+                        label = { Text(if (addIsSensitive) "Секретное значение (аппаратное шифрование)" else "Детали / Описание", fontSize = 12.sp) },
                         // A secret is masked and typed on a password keyboard, so the IME
                         // does not learn or suggest it.
                         singleLine = addIsSensitive,
@@ -1094,7 +1094,7 @@ fun KnowledgeGraphView(
                                 IconButton(onClick = { secretVisible = !secretVisible }) {
                                     Icon(
                                         imageVector = if (secretVisible) Icons.Default.VisibilityOff else Icons.Default.Visibility,
-                                        contentDescription = if (secretVisible) "Hide secret" else "Show secret",
+                                        contentDescription = if (secretVisible) "Скрыть секрет" else "Показать секрет",
                                         tint = TextSecondary
                                     )
                                 }
@@ -1135,7 +1135,7 @@ fun KnowledgeGraphView(
                             ),
                             shape = RoundedCornerShape(8.dp)
                         ) {
-                            Text("Save Entry", fontWeight = FontWeight.Bold)
+                            Text("Сохранить запись", fontWeight = FontWeight.Bold)
                         }
                     }
                 }
@@ -1166,7 +1166,7 @@ fun KnowledgeGraphView(
                 contentAlignment = Alignment.Center
             ) {
                 Text(
-                    text = "No Knowledge Graph entities matching filter.",
+                    text = "Нет объектов в сети знаний, соответствующих фильтру.",
                     color = TextSecondary,
                     fontSize = 13.sp,
                     fontFamily = FontFamily.Monospace
@@ -1256,7 +1256,7 @@ fun KnowledgeNodeCard(
                     ) {
                         Icon(
                             imageVector = Icons.Default.Delete,
-                            contentDescription = "Delete Node",
+                            contentDescription = "Удалить узел",
                             tint = TextSecondary.copy(alpha = 0.6f),
                             modifier = Modifier.size(16.dp)
                         )
@@ -1311,7 +1311,7 @@ fun KnowledgeNodeCard(
                     ) {
                         Icon(Icons.Default.TrendingUp, contentDescription = null, tint = AccentCyan, modifier = Modifier.size(12.dp))
                         Spacer(modifier = Modifier.width(4.dp))
-                        Text("Promote to Long-Term", fontSize = 10.sp, color = AccentCyan)
+                        Text("Продвижение на долгосрочную перспективу", fontSize = 10.sp, color = AccentCyan)
                     }
                 }
             }

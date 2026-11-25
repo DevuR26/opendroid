@@ -59,7 +59,7 @@ fun OnboardingScreen(
                     val titleText = when (stage) {
                         OnboardingStage.INTRODUCTION -> "About You"
                         OnboardingStage.PERMISSION_PROMPT -> "Permissions"
-                        OnboardingStage.PERMISSIONS -> "Grant Permissions"
+                        OnboardingStage.PERMISSIONS -> "Предоставить разрешения"
                     }
                     Text(titleText, color = TextPrimary, fontWeight = FontWeight.Bold)
                 },
@@ -137,7 +137,7 @@ private fun IntroductionPanel(
         ) {
             Image(
                 painter = painterResource(id = com.opendroid.ai.R.drawable.bot),
-                contentDescription = "OpenDroid Bot Avatar",
+                contentDescription = "Аватар бота OpenDroid",
                 modifier = Modifier.size(120.dp)
             )
         }
@@ -145,7 +145,7 @@ private fun IntroductionPanel(
         Spacer(modifier = Modifier.height(24.dp))
 
         Text(
-            text = "Hello! I am OpenDroid",
+            text = "Здравствуйте! Я ОпенДроид",
             fontSize = 24.sp,
             fontWeight = FontWeight.Bold,
             color = TextPrimary
@@ -154,7 +154,7 @@ private fun IntroductionPanel(
         Spacer(modifier = Modifier.height(12.dp))
 
         Text(
-            text = "Your open autonomous device assistant. Please introduce yourself so I can serve you personally.",
+            text = "Ваш открытый автономный помощник для устройств. Пожалуйста, представьтесь, чтобы я мог обслужить вас лично.",
             fontSize = 14.sp,
             color = TextSecondary,
             textAlign = androidx.compose.ui.text.style.TextAlign.Center
@@ -164,7 +164,7 @@ private fun IntroductionPanel(
             Spacer(modifier = Modifier.height(16.dp))
             Text(
                 text = "Your saved details could not be unlocked on this device, so they were " +
-                        "not kept. Nothing was stored unencrypted - please enter them again.",
+                        "не хранится. Ничего не хранилось в незашифрованном виде — введите их еще раз.",
                 color = AccentRed,
                 fontSize = 12.sp,
                 fontWeight = FontWeight.SemiBold,
@@ -177,8 +177,8 @@ private fun IntroductionPanel(
         OutlinedTextField(
             value = name,
             onValueChange = onNameChange,
-            label = { Text("What should I call you?", color = TextSecondary) },
-            placeholder = { Text("Enter your name", color = TextSecondary.copy(alpha = 0.6f)) },
+            label = { Text("Как мне тебя называть?", color = TextSecondary) },
+            placeholder = { Text("Введите свое имя", color = TextSecondary.copy(alpha = 0.6f)) },
             colors = OutlinedTextFieldDefaults.colors(
                 focusedBorderColor = AccentCyan,
                 unfocusedBorderColor = BorderColor,
@@ -200,13 +200,13 @@ private fun IntroductionPanel(
         OutlinedTextField(
             value = dob,
             onValueChange = onDobChange,
-            label = { Text("When is your birthday?", color = TextSecondary) },
-            placeholder = { Text("e.g. MM/DD/YYYY", color = TextSecondary.copy(alpha = 0.6f)) },
+            label = { Text("Когда у тебя день рождения?", color = TextSecondary) },
+            placeholder = { Text("например ММ/ДД/ГГГГ", color = TextSecondary.copy(alpha = 0.6f)) },
             trailingIcon = {
                 IconButton(onClick = { showDatePicker = true }) {
                     Icon(
                         imageVector = Icons.Default.DateRange,
-                        contentDescription = "Pick your birthday",
+                        contentDescription = "Выберите свой день рождения",
                         tint = TextPrimary
                     )
                 }
@@ -257,7 +257,7 @@ private fun IntroductionPanel(
         if (showError) {
             Spacer(modifier = Modifier.height(8.dp))
             Text(
-                text = "Please enter both your name and birth date.",
+                text = "Пожалуйста, введите свое имя и дату рождения.",
                 color = AccentRed,
                 fontSize = 12.sp,
                 fontWeight = FontWeight.SemiBold
@@ -267,7 +267,7 @@ private fun IntroductionPanel(
         if (storageError) {
             Spacer(modifier = Modifier.height(8.dp))
             Text(
-                text = "Your details could not be saved securely. Please try again.",
+                text = "Ваши данные не могут быть надежно сохранены. Пожалуйста, попробуйте еще раз.",
                 color = AccentRed,
                 fontSize = 12.sp,
                 fontWeight = FontWeight.SemiBold
@@ -327,7 +327,7 @@ fun PermissionPromptPanel(
         ) {
             Image(
                 painter = painterResource(id = com.opendroid.ai.R.drawable.bot),
-                contentDescription = "OpenDroid Bot Avatar",
+                contentDescription = "Аватар бота OpenDroid",
                 modifier = Modifier.size(120.dp)
             )
         }
@@ -335,7 +335,7 @@ fun PermissionPromptPanel(
         Spacer(modifier = Modifier.height(24.dp))
 
         Text(
-            text = "Permissions Setup",
+            text = "Настройка разрешений",
             fontSize = 24.sp,
             fontWeight = FontWeight.Bold,
             color = TextPrimary
@@ -344,7 +344,7 @@ fun PermissionPromptPanel(
         Spacer(modifier = Modifier.height(16.dp))
 
         Text(
-            text = "Let's give me permission so I can serve you well",
+            text = "Давайте дадим мне разрешение, чтобы я мог сослужить вам хорошую службу.",
             fontSize = 16.sp,
             fontWeight = FontWeight.SemiBold,
             color = AccentCyan,
@@ -354,7 +354,7 @@ fun PermissionPromptPanel(
         Spacer(modifier = Modifier.height(12.dp))
 
         Text(
-            text = "To allow me to interact with your device, run commands, list files, and operate system features, some standard Android permissions are required.",
+            text = "Чтобы я мог взаимодействовать с вашим устройством, запускать команды, просматривать файлы и управлять функциями системы, необходимы некоторые стандартные разрешения Android.",
             fontSize = 14.sp,
             color = TextSecondary,
             textAlign = androidx.compose.ui.text.style.TextAlign.Center
@@ -368,7 +368,7 @@ fun PermissionPromptPanel(
             colors = ButtonDefaults.buttonColors(containerColor = TextPrimary, contentColor = DarkBackground),
             shape = RoundedCornerShape(8.dp)
         ) {
-            Text("Grant Permissions", fontWeight = FontWeight.Bold, fontSize = 16.sp)
+            Text("Предоставить разрешения", fontWeight = FontWeight.Bold, fontSize = 16.sp)
         }
     }
 }

@@ -86,7 +86,7 @@ fun ChatScreen(
     val visibleAgentState by viewModel.visibleAgentState.collectAsState()
     val chatError by viewModel.chatError.collectAsState()
     // Id of whichever chat (if any) has a task actively running, regardless of which
-    // chat is currently displayed - drives the chat-picker's "still running" indicator.
+    // chat is currently displayed - drives the chat-picker's "все еще работает" indicator.
     val runningSessionId by viewModel.runningSessionId.collectAsState()
     val sessions by viewModel.sessions.collectAsState()
     val llmConfig by viewModel.llmConfig.collectAsState()
@@ -260,7 +260,7 @@ fun ChatScreen(
                         ) {
                             if (sessions.isEmpty()) {
                                 DropdownMenuItem(
-                                    text = { Text("No chats yet", color = TextSecondary, fontSize = 13.sp) },
+                                    text = { Text("Чатов пока нет", color = TextSecondary, fontSize = 13.sp) },
                                     onClick = {},
                                     enabled = false
                                 )
@@ -276,7 +276,7 @@ fun ChatScreen(
                                                 fontSize = 13.sp,
                                                 maxLines = 1
                                             )
-                                            // Small "still running" dot: a task can now keep
+                                            // Small "все еще работает" dot: a task can now keep
                                             // executing in a chat the user has switched away
                                             // from, so this is the only place that fact is
                                             // visible once its row scrolls out of the top bar.
@@ -313,7 +313,7 @@ fun ChatScreen(
                                             ) {
                                                 Icon(
                                                     imageVector = Icons.Default.Edit,
-                                                    contentDescription = "Rename chat",
+                                                    contentDescription = "Переименовать чат",
                                                     tint = TextSecondary,
                                                     modifier = Modifier.size(16.dp)
                                                 )
@@ -327,7 +327,7 @@ fun ChatScreen(
                                             ) {
                                                 Icon(
                                                     imageVector = Icons.Default.Delete,
-                                                    contentDescription = "Delete chat",
+                                                    contentDescription = "Удалить чат",
                                                     tint = AccentRed,
                                                     modifier = Modifier.size(16.dp)
                                                 )
@@ -478,14 +478,14 @@ fun ChatScreen(
                             )
                             Spacer(modifier = Modifier.width(6.dp))
                             Text(
-                                text = "Editing message",
+                                text = "Редактирование сообщения",
                                 fontSize = 11.sp,
                                 color = AccentCyan,
                                 modifier = Modifier.weight(1f)
                             )
                             Icon(
                                 imageVector = Icons.Default.Close,
-                                contentDescription = "Cancel edit",
+                                contentDescription = "Отменить редактирование",
                                 tint = TextSecondary,
                                 modifier = Modifier
                                     .size(16.dp)
@@ -575,7 +575,7 @@ fun ChatScreen(
                                 TextField(
                                     value = inputQuery,
                                     onValueChange = { inputQuery = it; voiceError = null },
-                                    placeholder = { Text("Ask OpenDroid to run an autonomous task...", color = TextSecondary, fontSize = 14.sp) },
+                                    placeholder = { Text("Попросите OpenDroid запустить автономную задачу...", color = TextSecondary, fontSize = 14.sp) },
                                     colors = TextFieldDefaults.colors(
                                         focusedContainerColor = Color.Transparent,
                                         unfocusedContainerColor = Color.Transparent,
@@ -626,7 +626,7 @@ fun ChatScreen(
         AlertDialog(
             onDismissRequest = { sessionPendingDelete = null },
             containerColor = DarkSurface,
-            title = { Text("Delete chat?", color = TextPrimary) },
+            title = { Text("Удалить чат?", color = TextPrimary) },
             text = {
                 Text(
                     "\"${session.title}\" and its messages will be permanently deleted.",
@@ -653,7 +653,7 @@ fun ChatScreen(
         AlertDialog(
             onDismissRequest = { sessionPendingRename = null },
             containerColor = DarkSurface,
-            title = { Text("Rename chat", color = TextPrimary) },
+            title = { Text("Переименовать чат", color = TextPrimary) },
             text = {
                 TextField(
                     value = renameText,
@@ -691,19 +691,19 @@ fun ChatScreen(
 fun AgentStatusSubtitle(state: AgentState, runningElsewhere: Boolean = false) {
     // runningElsewhere means [state] has already been forced to Idle because the real
     // activity belongs to a different chat (see ChatViewModel.visibleAgentState) - say
-    // so explicitly instead of showing a plain "Online & Ready" that would hide the
+    // so explicitly instead of showing a plain "Онлайн и готово" that would hide the
     // fact that a task is still going in the background.
     val text = if (runningElsewhere) {
-        "Online & Ready · Task running in another chat"
+        "Онлайн и готов · Задача выполняется в другом чате"
     } else {
         when (state) {
-            is AgentState.Idle -> "Online & Ready"
-            is AgentState.Listening -> "Listening to voice input..."
-            is AgentState.Thinking -> "Analyzing intent & planning..."
-            is AgentState.PlanProposed -> "Requires Plan Approval"
+            is AgentState.Idle -> "Онлайн и готово"
+            is AgentState.Listening -> "Прослушивание голосового ввода..."
+            is AgentState.Thinking -> "Анализ намерений и планирование..."
+            is AgentState.PlanProposed -> "Требуется утверждение плана"
             is AgentState.ExecutingPlan -> "Executing: ${state.currentStepDesc}"
             is AgentState.Speaking -> "Speaking: ${state.text.take(30)}..."
-            is AgentState.Error -> "Execution Error"
+            is AgentState.Error -> "Ошибка выполнения"
         }
     }
 
@@ -761,8 +761,8 @@ fun ChatBubble(
         }
 
         if (matches.isNotEmpty()) {
-            // Extract query from text ("Which 'dad' do you mean?" ? "dad")
-            val query = Regex("Which '(.*?)'").find(message.text)?.groupValues?.getOrNull(1) ?: "contact"
+            // Extract query from text ("Какого «папу» ты имеешь в виду?" ? "dad")
+            val query = Regex("Какой '(.*?)'").find(message.text)?.groupValues?.getOrNull(1) ?: "contact"
 
             // Only the picker the agent is waiting on takes taps; older cards stay visible
             // but inert, so they cannot answer a newer picker or start a new query.
@@ -815,9 +815,9 @@ fun ChatBubble(
             ) {
                 if (isAgent && message.modelBadge != null) {
                     val displayName = when (message.modelBadge) {
-                        "Gemma 4 (On-device)" -> "ON-DEVICE (AI CORE)"
-                        "On-Device AI" -> "ON-DEVICE AI"
-                        "LiteRT-LM (On-device)" -> "ON-DEVICE (LITERT)"
+                        "Джемма 4 (на устройстве)" -> "НА УСТРОЙСТВЕ (AI CORE)"
+                        "ИИ на устройстве" -> "ИИ НА УСТРОЙСТВЕ"
+                        "LiteRT-LM (на устройстве)" -> "НА УСТРОЙСТВЕ (ЛИТЕРТ)"
                         else -> message.modelBadge.uppercase(Locale.getDefault())
                     }
                     Text(
@@ -850,7 +850,7 @@ fun ChatBubble(
                     if (!isAgent && onEditRequested != null) {
                         Icon(
                             imageVector = Icons.Default.Edit,
-                            contentDescription = "Edit message",
+                            contentDescription = "Редактировать сообщение",
                             tint = TextSecondary,
                             modifier = Modifier
                                 .size(13.dp)
@@ -940,13 +940,13 @@ fun ProposedPlanPrompt(
             Row(verticalAlignment = Alignment.CenterVertically) {
                 Icon(
                     imageVector = Icons.Default.Warning,
-                    contentDescription = "Plan Proposed",
+                    contentDescription = "Предлагаемый план",
                     tint = AccentCyan,
                     modifier = Modifier.size(24.dp)
                 )
                 Spacer(modifier = Modifier.width(8.dp))
                 Text(
-                    text = "AUTONOMOUS PLAN PROPOSED",
+                    text = "ПРЕДЛАГАЕТСЯ АВТОНОМНЫЙ ПЛАН",
                     fontSize = 14.sp,
                     fontWeight = FontWeight.Bold,
                     fontFamily = FontFamily.Monospace,
@@ -986,14 +986,14 @@ fun ProposedPlanPrompt(
             }
             Spacer(modifier = Modifier.height(6.dp))
             Text(
-                text = "Review the steps in the PLAN tab or approve below to execute.",
+                text = "Просмотрите шаги на вкладке «ПЛАН» или подтвердите выполнение ниже.",
                 fontSize = 12.sp,
                 color = TextSecondary
             )
             if (blockedActions.isNotEmpty()) {
                 Spacer(modifier = Modifier.height(12.dp))
                 Text(
-                    text = "BLOCKED AUTO-RUN — these steps aren't in your allowlist:",
+                    text = "ЗАБЛОКИРОВАН АВТОЗАПУСК — этих шагов нет в вашем белом списке:",
                     fontSize = 11.sp,
                     fontFamily = FontFamily.Monospace,
                     color = AccentRed
@@ -1044,7 +1044,7 @@ fun ProposedPlanPrompt(
                     colors = ButtonDefaults.buttonColors(containerColor = TextPrimary, contentColor = DarkBackground),
                     shape = RoundedCornerShape(8.dp)
                 ) {
-                    Text("Approve & Run", fontWeight = FontWeight.Bold)
+                    Text("Утвердить и запустить", fontWeight = FontWeight.Bold)
                 }
             }
         }
@@ -1211,10 +1211,10 @@ private fun ChatErrorRecoveryCard(
     val retryHeld = phase is ChatErrorUiState.Phase.Retrying ||
         (phase is ChatErrorUiState.Phase.WaitingUntil && waitSecondsLeft > 0L)
     val actionLabel = when (error.primaryAction()) {
-        ChatErrorPrimaryAction.OPEN_SETTINGS -> "Open Settings"
-        ChatErrorPrimaryAction.CHOOSE_PROVIDER -> "Choose provider"
-        ChatErrorPrimaryAction.CHOOSE_MODEL -> "Choose model"
-        ChatErrorPrimaryAction.EDIT_MESSAGE -> "Edit message"
+        ChatErrorPrimaryAction.OPEN_SETTINGS -> "Открыть настройки"
+        ChatErrorPrimaryAction.CHOOSE_PROVIDER -> "Выберите провайдера"
+        ChatErrorPrimaryAction.CHOOSE_MODEL -> "Выберите модель"
+        ChatErrorPrimaryAction.EDIT_MESSAGE -> "Редактировать сообщение"
         ChatErrorPrimaryAction.RETRY -> "Retry"
         ChatErrorPrimaryAction.NONE -> null
     }
@@ -1241,7 +1241,7 @@ private fun ChatErrorRecoveryCard(
             }
             if (error.partialMessageId != null) {
                 Text(
-                    text = "Incomplete response",
+                    text = "Неполный ответ",
                     color = AccentCyan,
                     fontSize = 11.sp,
                     fontFamily = FontFamily.Monospace
@@ -1271,7 +1271,7 @@ private fun ChatErrorRecoveryCard(
                     }
                 }
                 TextButton(onClick = { detailsExpanded = !detailsExpanded }) {
-                    Text(if (detailsExpanded) "Hide details" else "Technical details")
+                    Text(if (detailsExpanded) "Скрыть детали" else "Технические детали")
                 }
                 TextButton(onClick = onDismiss) { Text("Dismiss") }
             }

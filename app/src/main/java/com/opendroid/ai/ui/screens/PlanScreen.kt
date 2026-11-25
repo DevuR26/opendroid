@@ -53,7 +53,7 @@ fun PlanScreen(
             TopAppBar(
                 title = {
                     Text(
-                        text = "PLAN ENGINE",
+                        text = "ПЛАН ДВИГАТЕЛЯ",
                         fontFamily = FontFamily.Monospace,
                         fontWeight = FontWeight.Bold,
                         color = TextPrimary,
@@ -90,7 +90,7 @@ fun PlanScreen(
 
                 item {
                     Text(
-                        text = "PLAN SEQUENCE STAGE",
+                        text = "ЭТАП ПОСЛЕДОВАТЕЛЬНОСТИ ПЛАНА",
                         fontSize = 12.sp,
                         fontWeight = FontWeight.Bold,
                         fontFamily = FontFamily.Monospace,
@@ -123,7 +123,7 @@ fun PlanScreen(
             if (planHistory.isNotEmpty()) {
                 item {
                     Text(
-                        text = "AUTONOMOUS EXECUTION HISTORY",
+                        text = "ИСТОРИЯ АВТОНОМНОГО ВЫПОЛНЕНИЯ",
                         fontSize = 12.sp,
                         fontWeight = FontWeight.Bold,
                         fontFamily = FontFamily.Monospace,
@@ -190,7 +190,7 @@ fun PlanHeaderCard(
                 }
                 if (!isCurrentActive) {
                     Text(
-                        text = "Viewing Past Run",
+                        text = "Просмотр прошлого запуска",
                         fontSize = 10.sp,
                         color = AccentPurple,
                         fontWeight = FontWeight.Bold,
@@ -203,7 +203,7 @@ fun PlanHeaderCard(
                     )
                 } else {
                     Text(
-                        text = "ACTIVE RUN",
+                        text = "АКТИВНЫЙ БЕГ",
                         fontSize = 10.sp,
                         color = AccentCyan,
                         fontWeight = FontWeight.Bold,
@@ -234,7 +234,7 @@ fun PlanHeaderCard(
                     Text("${plan.steps.size} scheduled", fontSize = 13.sp, fontWeight = FontWeight.Bold, color = TextPrimary)
                 }
                 Column(horizontalAlignment = Alignment.End) {
-                    Text("Estimated duration", fontSize = 10.sp, color = TextSecondary)
+                    Text("Предполагаемая продолжительность", fontSize = 10.sp, color = TextSecondary)
                     Text(plan.estimatedDuration, fontSize = 13.sp, fontWeight = FontWeight.Bold, color = TextPrimary)
                 }
             }
@@ -290,14 +290,14 @@ fun EmptyPlanPlaceholder() {
             )
             Spacer(modifier = Modifier.height(12.dp))
             Text(
-                text = "No active plans running",
+                text = "Нет активных планов",
                 fontSize = 14.sp,
                 fontWeight = FontWeight.Bold,
                 color = TextPrimary
             )
             Spacer(modifier = Modifier.height(6.dp))
             Text(
-                text = "Plans formulated by the autonomous system will display here in real-time.",
+                text = "Планы, сформулированные автономной системой, будут отображаться здесь в режиме реального времени.",
                 fontSize = 11.sp,
                 color = TextSecondary,
                 textAlign = androidx.compose.ui.text.style.TextAlign.Center
@@ -374,7 +374,7 @@ fun PastPlanRow(
             ) {
                 Icon(
                     imageVector = Icons.Default.Delete,
-                    contentDescription = "Delete Plan",
+                    contentDescription = "Удалить план",
                     tint = TextSecondary.copy(alpha = 0.5f),
                     modifier = Modifier.size(16.dp)
                 )

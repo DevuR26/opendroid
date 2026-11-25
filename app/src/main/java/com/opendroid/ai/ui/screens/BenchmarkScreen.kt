@@ -37,14 +37,14 @@ fun BenchmarkScreen(
     var showConfirm by remember { mutableStateOf(false) }
 
     val providers = ConnectionTestPlanner.cloudProviders()
-        .filter { it != "Custom OpenAI Compatible" }
+        .filter { it != "Пользовательская совместимость с OpenAI" }
 
     Scaffold(
         topBar = {
             TopAppBar(
                 title = {
                     Text(
-                        text = "BRAIN BENCHMARK",
+                        text = "ЭТАЛОН МОЗГА",
                         fontFamily = FontFamily.Monospace,
                         fontWeight = FontWeight.Bold,
                         color = TextPrimary,
@@ -78,7 +78,7 @@ fun BenchmarkScreen(
                                 modifier = Modifier.size(16.dp)
                             )
                             Spacer(modifier = Modifier.width(4.dp))
-                            Text("Test all configured", fontSize = 11.sp, fontWeight = FontWeight.Bold)
+                            Text("Протестируйте все настроенные", fontSize = 11.sp, fontWeight = FontWeight.Bold)
                         }
                     }
                 },
@@ -92,11 +92,11 @@ fun BenchmarkScreen(
             val configuredCount = ConnectionTestPlanner.configuredProviders(config).size
             AlertDialog(
                 onDismissRequest = { showConfirm = false },
-                title = { Text("Test all configured?") },
+                title = { Text("Проверить все настроено?") },
                 text = {
                     Text(
                         "This will send $configuredCount sequential provider requests. " +
-                            "Provider charges may apply."
+                            "Может взиматься плата со стороны поставщика услуг."
                     )
                 },
                 confirmButton = {
@@ -130,7 +130,7 @@ fun BenchmarkScreen(
                 ) {
                     Column(modifier = Modifier.padding(16.dp)) {
                         Text(
-                            text = "DIAGNOSTIC REPORT SUMMARY",
+                            text = "РЕЗЮМЕ ДИАГНОСТИЧЕСКОГО ОТЧЕТА",
                             fontSize = 11.sp,
                             fontWeight = FontWeight.Bold,
                             fontFamily = FontFamily.Monospace,
@@ -141,7 +141,7 @@ fun BenchmarkScreen(
                             text = batchProgress?.let {
                                 "Testing ${it.index} of ${it.total}: ${it.provider}"
                             } ?: "Explicit connection tests use each provider's own selected model. " +
-                                "Missing keys surface as configuration errors instead of silent skips.",
+                                "Отсутствующие ключи отображаются как ошибки конфигурации, а не как тихие пропуски.",
                             fontSize = 12.sp,
                             color = TextSecondary
                         )
@@ -175,11 +175,11 @@ fun ProviderConnectionRow(
         is ConnectionTestState.Connected -> "Connected · ${state.latencyMs} ms · ${state.model}"
         is ConnectionTestState.Failed -> connectionFailureLabel(state.error)
         is ConnectionTestState.ConfigMissing -> when (state.reason) {
-            LLMError.AuthMissing -> "Key required"
-            else -> "Configuration required"
+            LLMError.AuthMissing -> "Требуется ключ"
+            else -> "Требуется конфигурация"
         }
         else -> legacyLatencyMs?.takeIf { it > 0 && it != 9999L }?.let { "Last latency $it ms" }
-            ?: "Not tested"
+            ?: "Не проверено"
     }
     val barColor = when (state) {
         is ConnectionTestState.Connected -> AccentCyan
@@ -245,16 +245,16 @@ fun ProviderConnectionRow(
 }
 
 private fun connectionFailureLabel(error: LLMError): String = when (error) {
-    LLMError.AuthMissing -> "Key required"
-    LLMError.AuthInvalid -> "Invalid key"
-    LLMError.QuotaExhausted -> "Quota exhausted"
-    LLMError.RateLimited -> "Rate limited"
-    LLMError.ModelUnavailable -> "Model unavailable"
-    LLMError.RequestInvalid -> "Invalid request"
-    LLMError.Network -> "Network error"
-    LLMError.ServerError -> "Server error"
-    LLMError.MalformedResponse -> "Malformed response"
-    LLMError.SafeFallbackUnavailable -> "No safe fallback"
-    LLMError.ProviderUnrecognized -> "Provider not recognized"
+    LLMError.AuthMissing -> "Требуется ключ"
+    LLMError.AuthInvalid -> "Неверный ключ"
+    LLMError.QuotaExhausted -> "Квота исчерпана"
+    LLMError.RateLimited -> "Скорость ограничена"
+    LLMError.ModelUnavailable -> "Модель недоступна"
+    LLMError.RequestInvalid -> "Неверный запрос"
+    LLMError.Network -> "Ошибка сети"
+    LLMError.ServerError -> "Ошибка сервера"
+    LLMError.MalformedResponse -> "Неверный ответ"
+    LLMError.SafeFallbackUnavailable -> "Нет безопасного отступления"
+    LLMError.ProviderUnrecognized -> "Поставщик не распознан"
     LLMError.Unknown -> "Failed"
 }

@@ -56,7 +56,7 @@ fun NotificationHistoryScreen(
     Scaffold(
         topBar = {
             TopAppBar(
-                title = { Text("Notification History", fontWeight = FontWeight.Bold) },
+                title = { Text("История уведомлений", fontWeight = FontWeight.Bold) },
                 navigationIcon = {
                     IconButton(onClick = onBack) {
                         Icon(Icons.Default.ArrowBack, contentDescription = "Back")
@@ -141,13 +141,13 @@ fun NotificationHistoryScreen(
                         Text("🔔", fontSize = 48.sp)
                         Spacer(modifier = Modifier.height(12.dp))
                         Text(
-                            "No notifications captured yet",
+                            "Уведомлений пока не получено",
                             fontSize = 16.sp,
                             color = themeColors.textSecondary
                         )
                         Spacer(modifier = Modifier.height(4.dp))
                         Text(
-                            "Grant notification access in Settings",
+                            "Предоставьте доступ к уведомлениям в настройках",
                             fontSize = 13.sp,
                             color = themeColors.textSecondary.copy(alpha = 0.6f)
                         )
@@ -195,7 +195,7 @@ private fun NotificationCard(
     notification: NotificationEntity,
     themeColors: com.opendroid.ai.ui.theme.OpenDroidColors
 ) {
-    val dateFormat = remember { java.text.SimpleDateFormat("MMM d, h:mm a", java.util.Locale.getDefault()) }
+    val dateFormat = remember { java.text.SimpleDateFormat("МММ д, ч:мм а", java.util.Locale.getDefault()) }
     val timeText = dateFormat.format(java.util.Date(notification.timestamp))
 
     val categoryEmoji = when (notification.category) {

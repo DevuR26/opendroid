@@ -56,7 +56,7 @@ fun SocialOverviewTab(
                     modifier = Modifier.weight(1f)
                 )
                 MetricCard(
-                    title = "Total Reach",
+                    title = "Общий охват",
                     value = summary?.totalReach?.let { formatCount(it) } ?: "0",
                     delta = summary?.reachGrowthDelta?.let { if (it >= 0) "+$it" else "$it" } ?: "+0",
                     icon = Icons.Default.Visibility,
@@ -110,7 +110,7 @@ fun SocialOverviewTab(
                             )
                             Spacer(modifier = Modifier.width(8.dp))
                             Text(
-                                text = "AI SOCIAL INSIGHTS",
+                                text = "СОЦИАЛЬНЫЙ ИИ-ИНСАЙТ",
                                 fontSize = 13.sp,
                                 fontWeight = FontWeight.Bold,
                                 color = theme.accentCyan,
@@ -118,7 +118,7 @@ fun SocialOverviewTab(
                             )
                         }
                         Text(
-                            text = "Grounded Analysis",
+                            text = "Обоснованный анализ",
                             fontSize = 10.sp,
                             color = theme.textSecondary
                         )
@@ -156,7 +156,7 @@ fun SocialOverviewTab(
                         }
                     } else {
                         Text(
-                            text = "Analyzing historical records... Connect accounts to generate tailored strategies.",
+                            text = "Анализ исторических записей... Объедините учетные записи для создания индивидуальных стратегий.",
                             fontSize = 12.sp,
                             color = theme.textSecondary
                         )
@@ -168,7 +168,7 @@ fun SocialOverviewTab(
         // ── 3. TODAY'S ACTIVITY / INBOX SNAPSHOT ─────────────────────
         item {
             SectionHeader(
-                title = "Recent Activity & Inbox",
+                title = "Недавние действия и почтовый ящик",
                 actionLabel = "View All",
                 onAction = { onNavigateToTab(2) } // Inbox tab index
             )
@@ -181,7 +181,7 @@ fun SocialOverviewTab(
                     colors = CardDefaults.cardColors(containerColor = theme.cardBackground)
                 ) {
                     Box(modifier = Modifier.fillMaxWidth().padding(24.dp), contentAlignment = Alignment.Center) {
-                        Text("No recent social activity recorded.", color = theme.textSecondary, fontSize = 13.sp)
+                        Text("Никакой недавней социальной активности не зарегистрировано.", color = theme.textSecondary, fontSize = 13.sp)
                     }
                 }
             }
@@ -222,7 +222,7 @@ fun SocialOverviewTab(
         // ── 4. UPCOMING SCHEDULED POSTS ──────────────────────────────
         item {
             SectionHeader(
-                title = "Upcoming Content",
+                title = "Предстоящий контент",
                 actionLabel = "Calendar",
                 onAction = { onNavigateToTab(4) } // Calendar tab
             )
@@ -235,7 +235,7 @@ fun SocialOverviewTab(
                     colors = CardDefaults.cardColors(containerColor = theme.cardBackground)
                 ) {
                     Box(modifier = Modifier.fillMaxWidth().padding(20.dp), contentAlignment = Alignment.Center) {
-                        Text("No upcoming scheduled posts. Create one in Content Composer!", color = theme.textSecondary, fontSize = 12.sp)
+                        Text("Нет предстоящих запланированных публикаций. Создайте его в Content Composer!", color = theme.textSecondary, fontSize = 12.sp)
                     }
                 }
             }
@@ -252,7 +252,7 @@ fun SocialOverviewTab(
                             verticalAlignment = Alignment.CenterVertically
                         ) {
                             Text(post.platform.displayName, fontWeight = FontWeight.Bold, fontSize = 12.sp, color = theme.accentCyan)
-                            Text(if (post.requiresApproval) "NEEDS APPROVAL" else "SCHEDULED", fontSize = 10.sp, color = theme.textSecondary)
+                            Text(if (post.requiresApproval) "ТРЕБУЕТ УТВЕРЖДЕНИЯ" else "SCHEDULED", fontSize = 10.sp, color = theme.textSecondary)
                         }
                         Spacer(modifier = Modifier.height(6.dp))
                         Text(post.content, fontSize = 13.sp, color = theme.textPrimary, maxLines = 2)
@@ -264,7 +264,7 @@ fun SocialOverviewTab(
                                 colors = ButtonDefaults.buttonColors(containerColor = theme.textPrimary, contentColor = theme.background),
                                 shape = RoundedCornerShape(8.dp)
                             ) {
-                                Text("Approve Post", fontSize = 12.sp, fontWeight = FontWeight.Bold)
+                                Text("Одобрить публикацию", fontSize = 12.sp, fontWeight = FontWeight.Bold)
                             }
                         }
                     }
@@ -276,7 +276,7 @@ fun SocialOverviewTab(
         if (topPosts.isNotEmpty()) {
             item {
                 SectionHeader(
-                    title = "Top Performing Posts",
+                    title = "Самые популярные публикации",
                     actionLabel = "Analytics",
                     onAction = { onNavigateToTab(7) }
                 )

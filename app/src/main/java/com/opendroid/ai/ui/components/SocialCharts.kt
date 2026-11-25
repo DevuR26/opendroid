@@ -26,7 +26,7 @@ fun SimpleLineChart(
 ) {
     if (dataPoints.isEmpty()) {
         Box(modifier = modifier, contentAlignment = Alignment.Center) {
-            Text("No data points available", color = AppTheme.colors.textSecondary, fontSize = 12.sp)
+            Text("Нет доступных точек данных", color = AppTheme.colors.textSecondary, fontSize = 12.sp)
         }
         return
     }

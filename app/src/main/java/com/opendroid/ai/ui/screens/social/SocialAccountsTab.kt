@@ -70,13 +70,13 @@ fun SocialAccountsTab(
                     Spacer(modifier = Modifier.width(12.dp))
                     Column(modifier = Modifier.weight(1f)) {
                         Text(
-                            "Hardware-Encrypted Credentials",
+                            "Аппаратно зашифрованные учетные данные",
                             color = theme.textPrimary,
                             fontSize = 13.sp,
                             fontWeight = FontWeight.SemiBold
                         )
                         Text(
-                            "All API tokens are stored in Android KeyStore (AES-256-GCM). Tokens are never logged or stored in plaintext.",
+                            "Все токены API хранятся в Android KeyStore (AES-256-GCM). Токены никогда не регистрируются и не сохраняются в виде открытого текста.",
                             color = theme.textSecondary,
                             fontSize = 11.sp,
                             lineHeight = 15.sp
@@ -89,7 +89,7 @@ fun SocialAccountsTab(
         // ── PLATFORM CARDS ───────────────────────────────────────────
         item {
             Text(
-                "Connected Platforms",
+                "Подключенные платформы",
                 color = theme.textPrimary,
                 fontSize = 16.sp,
                 fontWeight = FontWeight.Bold
@@ -130,7 +130,7 @@ fun SocialAccountsTab(
             },
             text = {
                 Text(
-                    "This will delete all hardware-encrypted cryptographic keys and credentials from Android KeyStore. Any active automated tasks for this platform will stop immediately.",
+                    "Это приведет к удалению всех аппаратно зашифрованных криптографических ключей и учетных данных из Android KeyStore. Любые активные автоматизированные задачи для этой платформы будут немедленно остановлены.",
                     color = theme.textSecondary,
                     fontSize = 13.sp
                 )
@@ -143,7 +143,7 @@ fun SocialAccountsTab(
                     },
                     colors = ButtonDefaults.buttonColors(containerColor = theme.accentRed)
                 ) {
-                    Text("Revoke & Purge", color = Color.White, fontWeight = FontWeight.Bold)
+                    Text("Отозвать и очистить", color = Color.White, fontWeight = FontWeight.Bold)
                 }
             },
             dismissButton = {
@@ -214,7 +214,7 @@ private fun AccountCard(
                         )
                     } else {
                         Text(
-                            "Not connected",
+                            "Не подключено",
                             color = theme.textSecondary,
                             fontSize = 12.sp
                         )
@@ -268,9 +268,9 @@ private fun AccountCard(
                 ) {
                     val lastSync = account.lastSyncAt
                     val syncText = if (lastSync != null && lastSync > 0) {
-                        "Synced " + SimpleDateFormat("MMM d, HH:mm", LocalConfiguration.current.locales[0]).format(Date(lastSync))
+                        "Synced " + SimpleDateFormat("МММ д, ЧЧ:мм", LocalConfiguration.current.locales[0]).format(Date(lastSync))
                     } else {
-                        "Not synced yet"
+                        "Еще не синхронизировано"
                     }
                     Text(syncText, color = theme.textSecondary, fontSize = 11.sp)
 
@@ -302,7 +302,7 @@ private fun StatusBadge(status: AccountStatus) {
         AccountStatus.CONNECTED -> Triple(theme.accentCyan.copy(alpha = 0.15f), theme.accentCyan, "Connected")
         AccountStatus.DISCONNECTED -> Triple(theme.surface, theme.textSecondary, "Offline")
         AccountStatus.EXPIRED -> Triple(theme.accentOrange.copy(alpha = 0.15f), theme.accentOrange, "Expired")
-        AccountStatus.REAUTH_REQUIRED -> Triple(theme.accentOrange.copy(alpha = 0.15f), theme.accentOrange, "Reauth Needed")
+        AccountStatus.REAUTH_REQUIRED -> Triple(theme.accentOrange.copy(alpha = 0.15f), theme.accentOrange, "Требуется повторная аутентификация")
         AccountStatus.PERMISSION_DENIED -> Triple(theme.accentRed.copy(alpha = 0.15f), theme.accentRed, "Denied")
         AccountStatus.ERROR -> Triple(theme.accentRed.copy(alpha = 0.15f), theme.accentRed, "Error")
     }
@@ -362,7 +362,7 @@ private fun ConnectAccountDialog(
                 verticalArrangement = Arrangement.spacedBy(12.dp)
             ) {
                 Text(
-                    "Credentials will be encrypted with AES-256-GCM hardware keys.",
+                    "Учетные данные будут зашифрованы с помощью аппаратных ключей AES-256-GCM.",
                     color = theme.textSecondary,
                     fontSize = 11.sp
                 )
@@ -379,20 +379,20 @@ private fun ConnectAccountDialog(
                     )
                     Spacer(modifier = Modifier.width(6.dp))
                     Column {
-                        Text("Use Sandbox Mock Mode", color = theme.textPrimary, fontSize = 13.sp, fontWeight = FontWeight.SemiBold)
-                        Text("Simulates live API without external accounts", color = theme.textSecondary, fontSize = 10.sp)
+                        Text("Использовать тестовый режим песочницы", color = theme.textPrimary, fontSize = 13.sp, fontWeight = FontWeight.SemiBold)
+                        Text("Имитирует живой API без внешних учетных записей", color = theme.textSecondary, fontSize = 10.sp)
                     }
                 }
 
                 if (!useSandboxMock) {
                     val label1 = when (platform) {
                         SocialPlatform.TELEGRAM -> "Bot Token"
-                        SocialPlatform.DISCORD -> "Bot Token or Webhook URL"
-                        SocialPlatform.X -> "Bearer Token / API Key"
-                        SocialPlatform.LINKEDIN -> "OAuth Access Token"
-                        SocialPlatform.INSTAGRAM -> "Graph API Access Token"
-                        SocialPlatform.FACEBOOK -> "Page Access Token"
-                        SocialPlatform.YOUTUBE -> "OAuth Token / API Key"
+                        SocialPlatform.DISCORD -> "URL-адрес токена бота или веб-перехватчика"
+                        SocialPlatform.X -> "Токен на предъявителя/ключ API"
+                        SocialPlatform.LINKEDIN -> "Токен доступа OAuth"
+                        SocialPlatform.INSTAGRAM -> "Токен доступа к API графа"
+                        SocialPlatform.FACEBOOK -> "Токен доступа к странице"
+                        SocialPlatform.YOUTUBE -> "Токен OAuth/ключ API"
                     }
 
                     // Masked, and kept out of the keyboard's learned words.
@@ -416,7 +416,7 @@ private fun ConnectAccountDialog(
                     )
 
                     if (platform == SocialPlatform.TELEGRAM || platform == SocialPlatform.DISCORD) {
-                        val label2 = if (platform == SocialPlatform.TELEGRAM) "Chat ID / Channel ID" else "Channel ID (optional)"
+                        val label2 = if (platform == SocialPlatform.TELEGRAM) "Идентификатор чата/идентификатор канала" else "Идентификатор канала (необязательно)"
                         OutlinedTextField(
                             value = channelOrChatId,
                             onValueChange = { channelOrChatId = it },
@@ -433,7 +433,7 @@ private fun ConnectAccountDialog(
                     }
                 }
 
-                Text("Granted Permissions:", color = theme.textPrimary, fontSize = 12.sp, fontWeight = FontWeight.SemiBold)
+                Text("Предоставленные разрешения:", color = theme.textPrimary, fontSize = 12.sp, fontWeight = FontWeight.SemiBold)
                 Row(
                     modifier = Modifier.fillMaxWidth(),
                     horizontalArrangement = Arrangement.spacedBy(6.dp)
@@ -464,7 +464,7 @@ private fun ConnectAccountDialog(
                 enabled = useSandboxMock || tokenOrKey.isNotBlank(),
                 colors = ButtonDefaults.buttonColors(containerColor = theme.accentCyan)
             ) {
-                Text("Authorize & Connect", color = Color.Black, fontWeight = FontWeight.Bold)
+                Text("Авторизация и подключение", color = Color.Black, fontWeight = FontWeight.Bold)
             }
         },
         dismissButton = {

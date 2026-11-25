@@ -39,7 +39,7 @@ fun LogsScreen(
     modifier: Modifier = Modifier
 ) {
     var selectedTab by remember { mutableIntStateOf(0) }
-    val tabs = listOf("Execution Logs", "Action Errors")
+    val tabs = listOf("Журналы выполнения", "Ошибки действий")
 
     val history by viewModel.taskHistory.collectAsState()
     val actionErrors by viewModel.unknownActions.collectAsState()
@@ -57,7 +57,7 @@ fun LogsScreen(
             TopAppBar(
                 title = {
                     Text(
-                        text = "SYSTEM LOGS",
+                        text = "СИСТЕМНЫЕ ЖУРНАЛЫ",
                         fontFamily = FontFamily.Monospace,
                         fontWeight = FontWeight.Bold,
                         color = TextPrimary,
@@ -79,7 +79,7 @@ fun LogsScreen(
                         ) {
                             Icon(
                                 imageVector = Icons.Default.Delete,
-                                contentDescription = "Clear logs",
+                                contentDescription = "Очистить журналы",
                                 tint = AccentRed
                             )
                         }
@@ -154,8 +154,8 @@ fun LogsScreen(
                         }
                     } else {
                         EmptyStateView(
-                            title = "No executions recorded yet",
-                            subtitle = "Every step OpenDroid executes is archived here.",
+                            title = "Казни пока не зафиксированы",
+                            subtitle = "Здесь архивируется каждый шаг, выполняемый OpenDroid.",
                             icon = Icons.Default.Info
                         )
                     }
@@ -172,8 +172,8 @@ fun LogsScreen(
                         }
                     } else {
                         EmptyStateView(
-                            title = "All systems fully aligned",
-                            subtitle = "OpenDroid's Repair Engine has not encountered any unrecognized commands.",
+                            title = "Все системы полностью согласованы",
+                            subtitle = "Механизм восстановления OpenDroid не обнаружил никаких нераспознанных команд.",
                             icon = Icons.Default.CheckCircle,
                             iconColor = AccentCyan
                         )
@@ -190,16 +190,16 @@ fun LogsScreen(
                 selectedRunForMacro = null
                 macroSaveError = null
             },
-            title = { Text("Save completed task as macro") },
+            title = { Text("Сохранить выполненную задачу как макрос") },
             text = {
                 Column {
                     Text(
-                        "Only successful steps will be recorded. Credential, API-key, and token values are removed.",
+                        "Будут записаны только успешные шаги. Значения учетных данных, API-ключа и токена удаляются.",
                         fontSize = 12.sp,
                         color = TextSecondary
                     )
                     Spacer(modifier = Modifier.height(10.dp))
-                    Text("Steps this macro will run:", fontSize = 12.sp, color = TextPrimary)
+                    Text("Шаги, которые выполнит этот макрос:", fontSize = 12.sp, color = TextPrimary)
                     // Bounded and scrollable so a long run cannot push the name field off-screen.
                     Column(
                         modifier = Modifier
@@ -219,7 +219,7 @@ fun LogsScreen(
                     OutlinedTextField(
                         value = macroName,
                         onValueChange = { macroName = it },
-                        label = { Text("Macro name") },
+                        label = { Text("Имя макроса") },
                         singleLine = true,
                         modifier = Modifier.fillMaxWidth()
                     )
@@ -247,7 +247,7 @@ fun LogsScreen(
                     },
                     enabled = macroName.isNotBlank()
                 ) {
-                    Text("Save macro")
+                    Text("Сохранить макрос")
                 }
             },
             dismissButton = {
@@ -300,7 +300,7 @@ fun EmptyStateView(
 @Composable
 fun UnknownActionCard(error: UnknownActionEntity) {
     var expanded by remember { mutableStateOf(false) }
-    val dateFormat = remember { SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.getDefault()) }
+    val dateFormat = remember { SimpleDateFormat("гггг-ММ-дд ЧЧ:мм:сс", Locale.getDefault()) }
 
     val statusColor = when (error.fixStatus) {
         "AUTO_FIXED" -> AccentCyan
@@ -317,10 +317,10 @@ fun UnknownActionCard(error: UnknownActionEntity) {
     }
 
     val explanation = when (error.fixStatus) {
-        "AUTO_FIXED" -> "Successfully auto-corrected by OpenDroid's Repair Engine."
-        "REPLANNED" -> "Dynamically replanned and bypassed the unrecognized command."
-        "FAILED" -> "Unrecognized system command failed execution."
-        else -> "System anomaly tracked."
+        "AUTO_FIXED" -> "Ошибка автоматически исправлена с помощью OpenDroid Repair Engine."
+        "REPLANNED" -> "Динамическое перепланирование и обход нераспознанной команды."
+        "FAILED" -> "Неопознанная системная команда не выполнена."
+        else -> "Отслежена системная аномалия."
     }
 
     Card(
@@ -391,7 +391,7 @@ fun UnknownActionCard(error: UnknownActionEntity) {
                     Divider(color = BorderColor, modifier = Modifier.padding(vertical = 4.dp))
                     
                     Text(
-                        text = "System Status Details:",
+                        text = "Подробности о состоянии системы:",
                         fontSize = 11.sp,
                         color = TextSecondary
                     )
@@ -417,7 +417,7 @@ fun UnknownActionCard(error: UnknownActionEntity) {
             ) {
                 Icon(
                     imageVector = if (expanded) Icons.Default.KeyboardArrowUp else Icons.Default.KeyboardArrowDown,
-                    contentDescription = "Expand info",
+                    contentDescription = "Развернуть информацию",
                     tint = TextSecondary,
                     modifier = Modifier.size(16.dp)
                 )
@@ -432,7 +432,7 @@ fun HistoryLogCard(
     onSaveAsMacro: (() -> Unit)? = null
 ) {
     var expanded by remember { mutableStateOf(false) }
-    val dateFormat = remember { SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.getDefault()) }
+    val dateFormat = remember { SimpleDateFormat("гггг-ММ-дд ЧЧ:мм:сс", Locale.getDefault()) }
 
     Card(
         modifier = Modifier
@@ -503,7 +503,7 @@ fun HistoryLogCard(
                     colors = ButtonDefaults.buttonColors(containerColor = AccentPurple),
                     modifier = Modifier.fillMaxWidth()
                 ) {
-                    Text("Save completed task as macro", fontSize = 11.sp)
+                    Text("Сохранить выполненную задачу как макрос", fontSize = 11.sp)
                 }
             }
 
@@ -528,7 +528,7 @@ fun HistoryLogCard(
                     }
 
                     if (log.resultData != null) {
-                        Text("Execution Result Data:", fontSize = 11.sp, color = TextSecondary)
+                        Text("Данные о результате выполнения:", fontSize = 11.sp, color = TextSecondary)
                         Text(
                             text = log.resultData,
                             fontSize = 11.sp,
@@ -543,7 +543,7 @@ fun HistoryLogCard(
                     }
 
                     if (log.errorMessage != null) {
-                        Text("Diagnostic Error Log:", fontSize = 11.sp, color = TextSecondary)
+                        Text("Журнал диагностических ошибок:", fontSize = 11.sp, color = TextSecondary)
                         Text(
                             text = log.errorMessage,
                             fontSize = 11.sp,
@@ -567,7 +567,7 @@ fun HistoryLogCard(
             ) {
                 Icon(
                     imageVector = if (expanded) Icons.Default.KeyboardArrowUp else Icons.Default.KeyboardArrowDown,
-                    contentDescription = "Expand info",
+                    contentDescription = "Развернуть информацию",
                     tint = TextSecondary,
                     modifier = Modifier.size(16.dp)
                 )

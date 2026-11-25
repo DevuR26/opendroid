@@ -89,9 +89,9 @@ fun ContactPickerCard(
             // Hint
             Text(
                 text = if (enabled) {
-                    "Tap to select, or type the number (1, 2, 3...)"
+                    "Нажмите, чтобы выбрать, или введите число (1, 2, 3...)"
                 } else {
-                    "This choice is closed"
+                    "Этот выбор закрыт"
                 },
                 color = TextSecondary,
                 fontSize = 11.sp

@@ -28,7 +28,7 @@ fun TermsOfUseScreen(
             TopAppBar(
                 title = {
                     Text(
-                        text = "TERMS OF USE",
+                        text = "УСЛОВИЯ ИСПОЛЬЗОВАНИЯ",
                         fontFamily = FontFamily.Monospace,
                         fontWeight = FontWeight.Bold,
                         color = TextPrimary,
@@ -81,13 +81,13 @@ fun TermsOfUseScreen(
                         Spacer(modifier = Modifier.width(12.dp))
                         Column {
                             Text(
-                                text = "Terms of Use",
+                                text = "Условия использования",
                                 fontSize = 18.sp,
                                 fontWeight = FontWeight.Bold,
                                 color = TextPrimary
                             )
                             Text(
-                                text = "Effective: May 2026",
+                                text = "Вступает в силу: май 2026 г.",
                                 fontSize = 12.sp,
                                 color = TextSecondary
                             )
@@ -98,16 +98,16 @@ fun TermsOfUseScreen(
 
             item {
                 PolicySection(
-                    title = "1. ACCEPTANCE OF TERMS",
+                    title = "1. ПРИНЯТИЕ УСЛОВИЙ",
                     content = "By downloading, installing, or using OpenDroid (\"the App\"), you agree to be bound by these Terms of Use. " +
                             "If you do not agree to these terms, do not use the App.\n\n" +
-                            "OpenDroid is an open-source, autonomous AI assistant for Android. These terms govern your use of the App and all related services."
+                            "OpenDroid — это автономный искусственный помощник с открытым исходным кодом для Android. Эти условия регулируют использование вами Приложения и всех связанных с ним услуг."
                 )
             }
 
             item {
                 PolicySection(
-                    title = "2. PERMITTED USE",
+                    title = "2. РАЗРЕШЕННОЕ ИСПОЛЬЗОВАНИЕ",
                     content = "You may use OpenDroid for personal, non-commercial purposes including:\n\n" +
                             "• Automating device tasks (messaging, calls, alarms, etc.)\n" +
                             "• Managing smart home devices\n" +
@@ -118,76 +118,76 @@ fun TermsOfUseScreen(
                             "• Violate any laws or regulations\n" +
                             "• Harass, spam, or harm other individuals\n" +
                             "• Attempt to bypass device security or access unauthorized systems\n" +
-                            "• Interfere with other applications in a harmful manner"
+                            "• Вредное вмешательство в работу других приложений."
                 )
             }
 
             item {
                 PolicySection(
-                    title = "3. API KEYS & THIRD-PARTY SERVICES",
+                    title = "3. КЛЮЧИ API И СТОРОННИЕ УСЛУГИ",
                     content = "OpenDroid connects to third-party LLM providers (Google Gemini, OpenAI, Anthropic, etc.) using API keys you provide.\n\n" +
                             "• You are responsible for obtaining and managing your own API keys.\n" +
                             "• API key usage is subject to the respective provider's terms of service.\n" +
                             "• OpenDroid is not responsible for charges incurred through third-party API usage.\n" +
-                            "• Your API keys are stored locally on your device using AES-256 encryption and are never transmitted to OpenDroid servers."
+                            "• Ваши ключи API хранятся локально на вашем устройстве с использованием шифрования AES-256 и никогда не передаются на серверы OpenDroid."
                 )
             }
 
             item {
                 PolicySection(
-                    title = "4. ACCESSIBILITY SERVICE",
+                    title = "4. УСЛУГА ДОСТУПНОСТИ",
                     content = "OpenDroid uses Android's Accessibility Service to perform on-screen automations on your behalf. " +
                             "By enabling this service, you acknowledge that:\n\n" +
                             "• The service can interact with other apps on your device\n" +
                             "• It only acts when you explicitly give a command\n" +
                             "• You can disable it at any time from Android Settings\n" +
-                            "• OpenDroid does not use this service to collect or transmit data"
+                            "• OpenDroid не использует эту службу для сбора или передачи данных."
                 )
             }
 
             item {
                 PolicySection(
-                    title = "5. DISCLAIMER OF WARRANTIES",
+                    title = "5. ОТКАЗ ОТ ГАРАНТИЙ",
                     content = "OpenDroid is provided \"AS IS\" without warranties of any kind, either express or implied.\n\n" +
                             "• We do not guarantee uninterrupted or error-free operation.\n" +
                             "• AI-generated responses may be inaccurate or incomplete.\n" +
                             "• Automated actions may not execute as intended in all scenarios.\n" +
-                            "• You assume all risks associated with using the App."
+                            "• Вы принимаете на себя все риски, связанные с использованием Приложения."
                 )
             }
 
             item {
                 PolicySection(
-                    title = "6. LIMITATION OF LIABILITY",
+                    title = "6. ОГРАНИЧЕНИЕ ОТВЕТСТВЕННОСТИ",
                     content = "To the maximum extent permitted by law, the OpenDroid developers shall not be liable for any " +
                             "direct, indirect, incidental, special, or consequential damages arising from:\n\n" +
                             "• Use or inability to use the App\n" +
                             "• Unauthorized access to your data\n" +
                             "• Actions performed by the AI assistant\n" +
-                            "• Third-party service failures or charges"
+                            "• Сбои в работе сторонних служб или списание средств."
                 )
             }
 
             item {
                 PolicySection(
-                    title = "7. OPEN SOURCE",
+                    title = "7. ОТКРЫТЫЙ ИСТОЧНИК",
                     content = "OpenDroid is open-source software. You are free to view, modify, and distribute the source code " +
-                            "in accordance with the project's license terms. Contributions to the project are welcome and governed by the project's contribution guidelines."
+                            "в соответствии с условиями лицензии проекта. Вклады в проект приветствуются и регулируются руководящими принципами проекта."
                 )
             }
 
             item {
                 PolicySection(
-                    title = "8. CHANGES TO TERMS",
+                    title = "8. ИЗМЕНЕНИЯ В УСЛОВИЯХ",
                     content = "We may update these terms from time to time. Changes will be reflected in the App with an updated effective date. " +
-                            "Continued use of OpenDroid after changes constitutes acceptance of the updated terms."
+                            "Продолжение использования OpenDroid после внесения изменений означает принятие обновленных условий."
                 )
             }
 
             item {
                 PolicySection(
-                    title = "9. CONTACT",
-                    content = "For questions about these Terms of Use, please open an issue on our GitHub repository (JMAN730/opendroid) or reach the development team on Discord."
+                    title = "9. КОНТАКТЫ",
+                    content = "Если у вас есть вопросы по настоящим Условиям использования, откройте вопрос в нашем репозитории GitHub (JMAN730/opendroid) или обратитесь к команде разработчиков в Discord."
                 )
             }
         }

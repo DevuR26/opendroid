@@ -52,7 +52,7 @@ fun SocialAnalyticsTab(
                 horizontalArrangement = Arrangement.SpaceBetween,
                 verticalAlignment = Alignment.CenterVertically
             ) {
-                Text("Performance Analytics", color = theme.textPrimary, fontWeight = FontWeight.Bold, fontSize = 16.sp)
+                Text("Аналитика производительности", color = theme.textPrimary, fontWeight = FontWeight.Bold, fontSize = 16.sp)
 
                 Row(horizontalArrangement = Arrangement.spacedBy(6.dp)) {
                     listOf(7 to "7D", 30 to "30D", 90 to "90D").forEach { (days, label) ->
@@ -83,7 +83,7 @@ fun SocialAnalyticsTab(
                     modifier = Modifier.weight(1f)
                 )
                 AnalyticsMetricBox(
-                    title = "Total Reach",
+                    title = "Общий охват",
                     value = summary?.totalReach?.let { formatCount(it.toLong()) } ?: "0",
                     delta = summary?.reachGrowthDelta?.let { if (it >= 0) "+$it" else "$it" } ?: "+0",
                     modifier = Modifier.weight(1f)
@@ -103,7 +103,7 @@ fun SocialAnalyticsTab(
                     modifier = Modifier.weight(1f)
                 )
                 AnalyticsMetricBox(
-                    title = "Total Posts",
+                    title = "Всего сообщений",
                     value = summary?.totalPosts?.toString() ?: "0",
                     delta = "Published",
                     modifier = Modifier.weight(1f)
@@ -120,9 +120,9 @@ fun SocialAnalyticsTab(
                 colors = CardDefaults.cardColors(containerColor = theme.cardBackground)
             ) {
                 Column(modifier = Modifier.padding(16.dp)) {
-                    Text("Audience Growth Trend", color = theme.textPrimary, fontWeight = FontWeight.Bold, fontSize = 14.sp)
+                    Text("Тенденция роста аудитории", color = theme.textPrimary, fontWeight = FontWeight.Bold, fontSize = 14.sp)
                     Spacer(modifier = Modifier.height(4.dp))
-                    Text("Daily follower trajectory over the period", color = theme.textSecondary, fontSize = 11.sp)
+                    Text("Ежедневная траектория подписчиков за период", color = theme.textSecondary, fontSize = 11.sp)
                     Spacer(modifier = Modifier.height(16.dp))
 
                     val trendPoints = listOf(120f, 135f, 150f, 175f, 210f, 240f, 290f)
@@ -147,9 +147,9 @@ fun SocialAnalyticsTab(
                 colors = CardDefaults.cardColors(containerColor = theme.cardBackground)
             ) {
                 Column(modifier = Modifier.padding(16.dp)) {
-                    Text("Daily Impressions & Reach", color = theme.textPrimary, fontWeight = FontWeight.Bold, fontSize = 14.sp)
+                    Text("Ежедневные впечатления и охват", color = theme.textPrimary, fontWeight = FontWeight.Bold, fontSize = 14.sp)
                     Spacer(modifier = Modifier.height(4.dp))
-                    Text("Organic post visibility across all channels", color = theme.textSecondary, fontSize = 11.sp)
+                    Text("Органическая видимость публикаций по всем каналам", color = theme.textSecondary, fontSize = 11.sp)
                     Spacer(modifier = Modifier.height(16.dp))
 
                     val barValues = listOf(450f, 620f, 890f, 1200f, 950f, 1400f, 1800f)
@@ -174,7 +174,7 @@ fun SocialAnalyticsTab(
                 colors = CardDefaults.cardColors(containerColor = theme.cardBackground)
             ) {
                 Column(modifier = Modifier.padding(16.dp)) {
-                    Text("Audience Share by Platform", color = theme.textPrimary, fontWeight = FontWeight.Bold, fontSize = 14.sp)
+                    Text("Доля аудитории по платформам", color = theme.textPrimary, fontWeight = FontWeight.Bold, fontSize = 14.sp)
                     Spacer(modifier = Modifier.height(14.dp))
 
                     Row(
@@ -196,10 +196,10 @@ fun SocialAnalyticsTab(
                         )
 
                         Column(verticalArrangement = Arrangement.spacedBy(6.dp)) {
-                            LegendItem("X (Twitter)", "45%", theme.accentCyan)
+                            LegendItem("Х (Твиттер)", "45%", theme.accentCyan)
                             LegendItem("Telegram", "25%", theme.accentPurple)
                             LegendItem("LinkedIn", "20%", theme.accentOrange)
-                            LegendItem("Discord / Others", "10%", theme.textSecondary)
+                            LegendItem("Дискорд / Другие", "10%", theme.textSecondary)
                         }
                     }
                 }
@@ -208,12 +208,12 @@ fun SocialAnalyticsTab(
 
         // ── 6. PLATFORM BREAKDOWN CARDS ──────────────────────────────
         item {
-            Text("Channel Breakdown", color = theme.textPrimary, fontWeight = FontWeight.Bold, fontSize = 15.sp)
+            Text("Разбивка каналов", color = theme.textPrimary, fontWeight = FontWeight.Bold, fontSize = 15.sp)
         }
 
         if (accounts.isEmpty()) {
             item {
-                Text("No accounts connected yet.", color = theme.textSecondary, fontSize = 12.sp)
+                Text("Аккаунты пока не подключены.", color = theme.textSecondary, fontSize = 12.sp)
             }
         } else {
             items(accounts) { account ->
@@ -249,7 +249,7 @@ fun SocialAnalyticsTab(
 
                         Column(horizontalAlignment = Alignment.End) {
                             Text("${accountPosts.size} posts", color = theme.textPrimary, fontWeight = FontWeight.SemiBold, fontSize = 12.sp)
-                            Text("Active sync", color = theme.accentCyan, fontSize = 10.sp)
+                            Text("Активная синхронизация", color = theme.accentCyan, fontSize = 10.sp)
                         }
                     }
                 }

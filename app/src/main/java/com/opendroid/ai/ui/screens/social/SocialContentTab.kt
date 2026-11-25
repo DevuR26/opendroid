@@ -93,7 +93,7 @@ fun SocialContentTab(
                         Row(verticalAlignment = Alignment.CenterVertically) {
                             Icon(Icons.Default.AutoAwesome, contentDescription = null, tint = theme.accentCyan, modifier = Modifier.size(18.dp))
                             Spacer(modifier = Modifier.width(8.dp))
-                            Text("AI Content Composer", color = theme.textPrimary, fontWeight = FontWeight.Bold, fontSize = 15.sp)
+                            Text("Композитор AI-контента", color = theme.textPrimary, fontWeight = FontWeight.Bold, fontSize = 15.sp)
                         }
 
                         if (isGenerating) {
@@ -104,7 +104,7 @@ fun SocialContentTab(
                     Spacer(modifier = Modifier.height(12.dp))
 
                     // Platform Selector
-                    Text("Target Platform", color = theme.textSecondary, fontSize = 11.sp, fontWeight = FontWeight.Medium)
+                    Text("Целевая платформа", color = theme.textSecondary, fontSize = 11.sp, fontWeight = FontWeight.Medium)
                     Spacer(modifier = Modifier.height(6.dp))
                     LazyRow(
                         modifier = Modifier.fillMaxWidth(),
@@ -129,8 +129,8 @@ fun SocialContentTab(
                     OutlinedTextField(
                         value = topicInput,
                         onValueChange = { topicInput = it },
-                        label = { Text("What would you like to post about?", fontSize = 12.sp) },
-                        placeholder = { Text("e.g. OpenDroid v2 release with local AI agent capabilities", fontSize = 12.sp) },
+                        label = { Text("О чем бы вы хотели опубликовать?", fontSize = 12.sp) },
+                        placeholder = { Text("например Выпуск OpenDroid v2 с возможностями локального агента искусственного интеллекта", fontSize = 12.sp) },
                         modifier = Modifier.fillMaxWidth(),
                         maxLines = 3,
                         colors = OutlinedTextFieldDefaults.colors(
@@ -179,7 +179,7 @@ fun SocialContentTab(
                     ) {
                         Icon(Icons.Default.AutoAwesome, contentDescription = null, tint = Color.Black, modifier = Modifier.size(16.dp))
                         Spacer(modifier = Modifier.width(8.dp))
-                        Text("Generate Platform Post", color = Color.Black, fontWeight = FontWeight.Bold, fontSize = 13.sp)
+                        Text("Создать публикацию на платформе", color = Color.Black, fontWeight = FontWeight.Bold, fontSize = 13.sp)
                     }
 
                     Spacer(modifier = Modifier.height(14.dp))
@@ -192,7 +192,7 @@ fun SocialContentTab(
                         horizontalArrangement = Arrangement.SpaceBetween,
                         verticalAlignment = Alignment.CenterVertically
                     ) {
-                        Text("Draft Content", color = theme.textPrimary, fontWeight = FontWeight.SemiBold, fontSize = 13.sp)
+                        Text("Черновой вариант контента", color = theme.textPrimary, fontWeight = FontWeight.SemiBold, fontSize = 13.sp)
                         val isOverLimit = currentContent.length > maxLimit
                         Text(
                             "${currentContent.length} / $maxLimit",
@@ -208,7 +208,7 @@ fun SocialContentTab(
                         value = currentContent,
                         onValueChange = { currentContent = it },
                         modifier = Modifier.fillMaxWidth().height(120.dp),
-                        placeholder = { Text("Generated or custom post text appears here...", fontSize = 12.sp) },
+                        placeholder = { Text("Здесь отображается сгенерированный или пользовательский текст сообщения...", fontSize = 12.sp) },
                         colors = OutlinedTextFieldDefaults.colors(
                             focusedTextColor = theme.textPrimary,
                             unfocusedTextColor = theme.textPrimary,
@@ -220,7 +220,7 @@ fun SocialContentTab(
                     Spacer(modifier = Modifier.height(10.dp))
 
                     // Quick AI Modifiers Row
-                    Text("AI Modifiers", color = theme.textSecondary, fontSize = 11.sp, fontWeight = FontWeight.Medium)
+                    Text("Модификаторы ИИ", color = theme.textSecondary, fontSize = 11.sp, fontWeight = FontWeight.Medium)
                     Spacer(modifier = Modifier.height(4.dp))
                     LazyRow(
                         modifier = Modifier.fillMaxWidth(),
@@ -261,7 +261,7 @@ fun SocialContentTab(
                         }
                         item {
                             ModifierChip(
-                                title = "Clean Hashtags",
+                                title = "Чистые хештеги",
                                 icon = Icons.Default.Tag,
                                 onClick = {
                                     if (currentContent.isNotBlank()) {
@@ -272,7 +272,7 @@ fun SocialContentTab(
                         }
                         item {
                             ModifierChip(
-                                title = "Make Excited",
+                                title = "взволновать",
                                 icon = Icons.Default.Celebration,
                                 onClick = {
                                     if (currentContent.isNotBlank()) {
@@ -303,7 +303,7 @@ fun SocialContentTab(
                             shape = RoundedCornerShape(12.dp),
                             border = androidx.compose.foundation.BorderStroke(1.dp, theme.borderColor)
                         ) {
-                            Text("Save Draft", color = theme.textPrimary, fontSize = 12.sp)
+                            Text("Сохранить черновик", color = theme.textPrimary, fontSize = 12.sp)
                         }
 
                         OutlinedButton(
@@ -343,7 +343,7 @@ fun SocialContentTab(
                 horizontalArrangement = Arrangement.SpaceBetween,
                 verticalAlignment = Alignment.CenterVertically
             ) {
-                Text("Post History & Queue", color = theme.textPrimary, fontWeight = FontWeight.Bold, fontSize = 16.sp)
+                Text("История сообщений и очередь", color = theme.textPrimary, fontWeight = FontWeight.Bold, fontSize = 16.sp)
             }
         }
 
@@ -386,7 +386,7 @@ fun SocialContentTab(
                     modifier = Modifier.fillMaxWidth().padding(vertical = 40.dp),
                     contentAlignment = Alignment.Center
                 ) {
-                    Text("No posts found in this filter", color = theme.textSecondary, fontSize = 13.sp)
+                    Text("По этому фильтру сообщений не найдено", color = theme.textSecondary, fontSize = 13.sp)
                 }
             }
         } else {
@@ -459,7 +459,7 @@ private fun PostItemCard(
     onResolveInterrupted: (Boolean) -> Unit
 ) {
     val theme = AppTheme.colors
-    val timeFormat = SimpleDateFormat("MMM d, HH:mm", LocalConfiguration.current.locales[0])
+    val timeFormat = SimpleDateFormat("МММ д, ЧЧ:мм", LocalConfiguration.current.locales[0])
     val dateString = when {
         post.publishedTime != null -> "Published " + timeFormat.format(Date(post.publishedTime))
         post.scheduledPublishTime != null -> "Scheduled for " + timeFormat.format(Date(post.scheduledPublishTime))
@@ -552,7 +552,7 @@ private fun PostItemCard(
                             colors = ButtonDefaults.buttonColors(containerColor = theme.accentCyan),
                             contentPadding = PaddingValues(horizontal = 10.dp, vertical = 4.dp)
                         ) {
-                            Text("Publish Now", color = Color.Black, fontSize = 11.sp, fontWeight = FontWeight.Bold)
+                            Text("Опубликовать сейчас", color = Color.Black, fontSize = 11.sp, fontWeight = FontWeight.Bold)
                         }
                     } else if (post.status == PostStatus.SCHEDULED) {
                         OutlinedButton(
@@ -570,7 +570,7 @@ private fun PostItemCard(
                             colors = ButtonDefaults.buttonColors(containerColor = theme.accentCyan),
                             contentPadding = PaddingValues(horizontal = 10.dp, vertical = 4.dp)
                         ) {
-                            Text("Publish Now", color = Color.Black, fontSize = 11.sp, fontWeight = FontWeight.Bold)
+                            Text("Опубликовать сейчас", color = Color.Black, fontSize = 11.sp, fontWeight = FontWeight.Bold)
                         }
                     } else if (post.status == PostStatus.FAILED) {
                         Button(
@@ -639,17 +639,17 @@ internal fun ScheduleTimeDialog(
     AlertDialog(
         onDismissRequest = onDismiss,
         containerColor = theme.cardBackground,
-        title = { Text("Schedule Post Time", color = theme.textPrimary, fontWeight = FontWeight.Bold) },
+        title = { Text("Запланируйте время публикации", color = theme.textPrimary, fontWeight = FontWeight.Bold) },
         text = {
             Column(verticalArrangement = Arrangement.spacedBy(10.dp)) {
-                Text("Select when this post should be automatically published:", color = theme.textSecondary, fontSize = 12.sp)
+                Text("Выберите, когда это сообщение должно быть автоматически опубликовано:", color = theme.textSecondary, fontSize = 12.sp)
 
                 listOf(
                     1 to "In 1 hour",
-                    3 to "In 3 hours",
-                    6 to "In 6 hours",
-                    12 to "In 12 hours",
-                    24 to "Tomorrow (24 hours)",
+                    3 to "Через 3 часа",
+                    6 to "Через 6 часов",
+                    12 to "Через 12 часов",
+                    24 to "Завтра (24 часа)",
                     48 to "In 2 days"
                 ).forEach { (hours, label) ->
                     Row(

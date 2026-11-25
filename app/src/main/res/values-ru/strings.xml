@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">OpenDroid</string>
+    <string name="accessibility_service_desc">Обеспечивает автономное взаимодействие с интерфейсом, чтение экрана и навигацию для управления агентом OpenDroid.</string>
+</resources>

@@ -118,7 +118,7 @@ fun SocialScreen(
                         Spacer(modifier = Modifier.width(10.dp))
                         Column {
                             Text(
-                                "Social Studio",
+                                "Социальная Студия",
                                 color = theme.textPrimary,
                                 fontWeight = FontWeight.Bold,
                                 fontSize = 16.sp

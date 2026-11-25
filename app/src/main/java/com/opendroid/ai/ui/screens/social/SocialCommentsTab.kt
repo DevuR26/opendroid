@@ -91,7 +91,7 @@ fun SocialCommentsTab(
                         FilterChip(
                             selected = selectedPlatform == null,
                             onClick = { selectedPlatform = null },
-                            label = { Text("All Platforms", fontSize = 11.sp) },
+                            label = { Text("Все платформы", fontSize = 11.sp) },
                             colors = FilterChipDefaults.filterChipColors(
                                 selectedContainerColor = theme.surface,
                                 selectedLabelColor = theme.textPrimary
@@ -133,14 +133,14 @@ fun SocialCommentsTab(
                         )
                         Spacer(modifier = Modifier.height(10.dp))
                         Text(
-                            if (showOnlyUnanswered) "All Caught Up!" else "No Comments Found",
+                            if (showOnlyUnanswered) "Все пойманы!" else "Комментарии не найдены",
                             color = theme.textPrimary,
                             fontWeight = FontWeight.Bold,
                             fontSize = 15.sp
                         )
                         Spacer(modifier = Modifier.height(4.dp))
                         Text(
-                            if (showOnlyUnanswered) "Every audience comment has been answered or reviewed." else "No comments matching selected filter.",
+                            if (showOnlyUnanswered) "На каждый комментарий аудитории был дан ответ или рассмотрен." else "Нет комментариев, соответствующих выбранному фильтру.",
                             color = theme.textSecondary,
                             fontSize = 12.sp
                         )
@@ -170,7 +170,7 @@ private fun CommentReviewCard(
     onGenerateReply: ((SuggestedReply) -> Unit) -> Unit
 ) {
     val theme = AppTheme.colors
-    val timeFormatted = SimpleDateFormat("MMM d, HH:mm", LocalConfiguration.current.locales[0]).format(Date(comment.timestamp))
+    val timeFormatted = SimpleDateFormat("МММ д, ЧЧ:мм", LocalConfiguration.current.locales[0]).format(Date(comment.timestamp))
 
     var replyText by remember(comment.id) {
         mutableStateOf(comment.suggestedReply ?: "")
@@ -272,7 +272,7 @@ private fun CommentReviewCard(
                         contentPadding = PaddingValues(horizontal = 8.dp, vertical = 4.dp),
                         border = androidx.compose.foundation.BorderStroke(0.5.dp, theme.borderColor)
                     ) {
-                        Text("Not posted", color = theme.textPrimary, fontSize = 11.sp)
+                        Text("Не опубликовано", color = theme.textPrimary, fontSize = 11.sp)
                     }
 
                     OutlinedButton(
@@ -281,7 +281,7 @@ private fun CommentReviewCard(
                         contentPadding = PaddingValues(horizontal = 8.dp, vertical = 4.dp),
                         border = androidx.compose.foundation.BorderStroke(0.5.dp, theme.borderColor)
                     ) {
-                        Text("It's posted", color = theme.textPrimary, fontSize = 11.sp)
+                        Text("Это опубликовано", color = theme.textPrimary, fontSize = 11.sp)
                     }
                 }
             }
@@ -308,7 +308,7 @@ private fun CommentReviewCard(
                             Row(verticalAlignment = Alignment.CenterVertically) {
                                 Icon(Icons.Default.AutoAwesome, contentDescription = null, tint = theme.accentCyan, modifier = Modifier.size(13.dp))
                                 Spacer(modifier = Modifier.width(6.dp))
-                                Text("Grounded AI Reply Draft", color = theme.accentCyan, fontSize = 11.sp, fontWeight = FontWeight.Bold)
+                                Text("Обоснованный черновик ответа ИИ", color = theme.accentCyan, fontSize = 11.sp, fontWeight = FontWeight.Bold)
                             }
 
                             if (isGeneratingReply) {
@@ -334,7 +334,7 @@ private fun CommentReviewCard(
                         OutlinedTextField(
                             value = replyText,
                             onValueChange = { replyText = it },
-                            placeholder = { Text("Tap Regenerate or type custom reply...", fontSize = 11.sp) },
+                            placeholder = { Text("Нажмите «Перегенерировать» или введите собственный ответ...", fontSize = 11.sp) },
                             modifier = Modifier.fillMaxWidth(),
                             maxLines = 4,
                             colors = OutlinedTextFieldDefaults.colors(
@@ -347,7 +347,7 @@ private fun CommentReviewCard(
 
                         Spacer(modifier = Modifier.height(4.dp))
                         Text(
-                            "Grounded strictly in verified OpenDroid facts. Anti-hallucination active.",
+                            "Основано строго на проверенных фактах OpenDroid. Активен против галлюцинаций.",
                             color = theme.textSecondary,
                             fontSize = 9.sp
                         )
@@ -366,7 +366,7 @@ private fun CommentReviewCard(
                         onClick = onIgnore,
                         contentPadding = PaddingValues(horizontal = 6.dp, vertical = 2.dp)
                     ) {
-                        Text("Ignore / Dismiss", color = theme.textSecondary, fontSize = 11.sp)
+                        Text("Игнорировать/Отклонить", color = theme.textSecondary, fontSize = 11.sp)
                     }
 
                     Button(
@@ -380,7 +380,7 @@ private fun CommentReviewCard(
                         shape = RoundedCornerShape(12.dp),
                         contentPadding = PaddingValues(horizontal = 14.dp, vertical = 4.dp)
                     ) {
-                        Text("Approve & Reply", color = Color.Black, fontSize = 11.sp, fontWeight = FontWeight.Bold)
+                        Text("Утвердить и ответить", color = Color.Black, fontSize = 11.sp, fontWeight = FontWeight.Bold)
                     }
                 }
             }

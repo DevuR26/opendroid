@@ -99,7 +99,7 @@ fun SocialCalendarTab(
                         horizontalArrangement = Arrangement.SpaceBetween,
                         verticalAlignment = Alignment.CenterVertically
                     ) {
-                        Text("Schedule Horizon", color = theme.textPrimary, fontWeight = FontWeight.Bold, fontSize = 14.sp)
+                        Text("Расписание Горизонт", color = theme.textPrimary, fontWeight = FontWeight.Bold, fontSize = 14.sp)
                         val totalScheduled = posts.count { it.status == PostStatus.SCHEDULED }
                         Text("$totalScheduled total queued", color = theme.accentCyan, fontSize = 11.sp, fontWeight = FontWeight.SemiBold)
                     }
@@ -139,7 +139,7 @@ fun SocialCalendarTab(
             ) {
                 Column {
                     Text(
-                        if (selectedDay.isToday) "Today's Schedule" else "${selectedDay.dayOfWeek}, ${selectedDay.dayOfMonth}",
+                        if (selectedDay.isToday) "Расписание на сегодня" else "${selectedDay.dayOfWeek}, ${selectedDay.dayOfMonth}",
                         color = theme.textPrimary,
                         fontWeight = FontWeight.Bold,
                         fontSize = 16.sp
@@ -159,7 +159,7 @@ fun SocialCalendarTab(
                 ) {
                     Icon(Icons.Default.Add, contentDescription = null, tint = Color.Black, modifier = Modifier.size(16.dp))
                     Spacer(modifier = Modifier.width(4.dp))
-                    Text("Schedule Post", color = Color.Black, fontSize = 11.sp, fontWeight = FontWeight.Bold)
+                    Text("Запланировать публикацию", color = Color.Black, fontSize = 11.sp, fontWeight = FontWeight.Bold)
                 }
             }
         }
@@ -180,14 +180,14 @@ fun SocialCalendarTab(
                         )
                         Spacer(modifier = Modifier.height(10.dp))
                         Text(
-                            "No Posts Scheduled",
+                            "Нет запланированных публикаций",
                             color = theme.textPrimary,
                             fontWeight = FontWeight.Bold,
                             fontSize = 15.sp
                         )
                         Spacer(modifier = Modifier.height(4.dp))
                         Text(
-                            "Tap 'Schedule Post' to queue content for this date.",
+                            "Нажмите «Запланировать публикацию», чтобы поставить контент в очередь на эту дату.",
                             color = theme.textSecondary,
                             fontSize = 12.sp
                         )
@@ -341,7 +341,7 @@ private fun ScheduledPostCard(
                             .background(theme.accentOrange.copy(alpha = 0.15f))
                             .padding(horizontal = 6.dp, vertical = 2.dp)
                     ) {
-                        Text("APPROVAL NEEDED", color = theme.accentOrange, fontSize = 8.sp, fontWeight = FontWeight.Bold)
+                        Text("НЕОБХОДИМО УТВЕРЖДЕНИЕ", color = theme.accentOrange, fontSize = 8.sp, fontWeight = FontWeight.Bold)
                     }
                 } else {
                     Box(
@@ -350,7 +350,7 @@ private fun ScheduledPostCard(
                             .background(theme.accentCyan.copy(alpha = 0.15f))
                             .padding(horizontal = 6.dp, vertical = 2.dp)
                     ) {
-                        Text("AUTO PUBLISH", color = theme.accentCyan, fontSize = 8.sp, fontWeight = FontWeight.Bold)
+                        Text("АВТО ПУБЛИКАЦИЯ", color = theme.accentCyan, fontSize = 8.sp, fontWeight = FontWeight.Bold)
                     }
                 }
             }
@@ -395,7 +395,7 @@ private fun ScheduledPostCard(
                         colors = ButtonDefaults.buttonColors(containerColor = theme.accentCyan),
                         contentPadding = PaddingValues(horizontal = 12.dp, vertical = 4.dp)
                     ) {
-                        Text("Publish Now", color = Color.Black, fontSize = 11.sp, fontWeight = FontWeight.Bold)
+                        Text("Опубликовать сейчас", color = Color.Black, fontSize = 11.sp, fontWeight = FontWeight.Bold)
                     }
                 }
             }

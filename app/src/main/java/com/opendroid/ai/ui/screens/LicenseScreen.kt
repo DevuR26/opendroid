@@ -81,13 +81,13 @@ fun LicenseScreen(
                         Spacer(modifier = Modifier.width(12.dp))
                         Column {
                             Text(
-                                text = "Open Source License",
+                                text = "Лицензия с открытым исходным кодом",
                                 fontSize = 18.sp,
                                 fontWeight = FontWeight.Bold,
                                 color = TextPrimary
                             )
                             Text(
-                                text = "Apache License 2.0",
+                                text = "Лицензия Апач 2.0",
                                 fontSize = 12.sp,
                                 color = AccentPurple
                             )
@@ -98,7 +98,7 @@ fun LicenseScreen(
 
             item {
                 PolicySection(
-                    title = "APACHE LICENSE 2.0",
+                    title = "ЛИЦЕНЗИЯ АПАЧЕ 2.0",
                     content = "Copyright (c) 2026 OpenDroid Contributors\n" +
                             "Last Updated: August 18, 2026\n\n" +
                             "Licensed under the Apache License, Version 2.0 (the \"License\"); " +
@@ -109,13 +109,13 @@ fun LicenseScreen(
                             "distributed under the License is distributed on an \"AS IS\" BASIS, " +
                             "WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. " +
                             "See the License for the specific language governing permissions and " +
-                            "limitations under the License."
+                            "ограничения по Лицензии."
                 )
             }
 
             item {
                 PolicySection(
-                    title = "THIRD-PARTY LICENSES",
+                    title = "СТОРОННИЕ ЛИЦЕНЗИИ",
                     content = "OpenDroid uses the following open-source libraries:\n\n" +
                             "• Jetpack Compose — Apache License 2.0\n" +
                             "• Dagger/Hilt — Apache License 2.0\n" +
@@ -124,7 +124,7 @@ fun LicenseScreen(
                             "• Kotlin Serialization — Apache License 2.0\n" +
                             "• Coil Image Loading — Apache License 2.0\n" +
                             "• Lottie Animations — Apache License 2.0\n" +
-                            "• DataStore Preferences — Apache License 2.0"
+                            "• Настройки хранилища данных — лицензия Apache 2.0."
                 )
             }
 
@@ -138,7 +138,7 @@ fun LicenseScreen(
                             "• Code contributions via pull requests\n" +
                             "• Documentation improvements\n" +
                             "• Translation and localization\n\n" +
-                            "Please refer to CONTRIBUTING.md in the repository for contribution guidelines."
+                            "Пожалуйста, обратитесь к CONTRIBUTING.md в репозитории за инструкциями по участию."
                 )
             }
 
@@ -147,7 +147,7 @@ fun LicenseScreen(
                     title = "ATTRIBUTION",
                     content = "OpenDroid is built with ❤\uFE0F by the open-source community.\n\n" +
                             "Special thanks to all contributors who have helped make this project possible. " +
-                            "Full contributor list is available on the GitHub repository."
+                            "Полный список участников доступен в репозитории GitHub."
                 )
             }
         }

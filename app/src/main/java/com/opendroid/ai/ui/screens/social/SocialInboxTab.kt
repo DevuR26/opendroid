@@ -102,14 +102,14 @@ fun SocialInboxTab(
                         )
                         Spacer(modifier = Modifier.height(12.dp))
                         Text(
-                            "Inbox is Clean",
+                            "Входящие чистые",
                             color = theme.textPrimary,
                             fontWeight = FontWeight.Bold,
                             fontSize = 16.sp
                         )
                         Spacer(modifier = Modifier.height(4.dp))
                         Text(
-                            "No pending notifications, mentions, or messages.",
+                            "Никаких ожидающих уведомлений, упоминаний или сообщений.",
                             color = theme.textSecondary,
                             fontSize = 12.sp
                         )
@@ -157,7 +157,7 @@ fun SocialInboxTab(
                     OutlinedTextField(
                         value = replyText,
                         onValueChange = { replyText = it },
-                        label = { Text("Your Reply", fontSize = 12.sp) },
+                        label = { Text("Ваш ответ", fontSize = 12.sp) },
                         modifier = Modifier.fillMaxWidth().height(120.dp),
                         colors = OutlinedTextFieldDefaults.colors(
                             focusedTextColor = theme.textPrimary,
@@ -177,7 +177,7 @@ fun SocialInboxTab(
                     enabled = replyText.isNotBlank(),
                     colors = ButtonDefaults.buttonColors(containerColor = theme.accentCyan)
                 ) {
-                    Text("Send Reply", color = Color.Black, fontWeight = FontWeight.Bold)
+                    Text("Отправить ответ", color = Color.Black, fontWeight = FontWeight.Bold)
                 }
             },
             dismissButton = {
@@ -197,7 +197,7 @@ private fun InteractionCard(
     onDismissClick: () -> Unit
 ) {
     val theme = AppTheme.colors
-    val timeFormatted = SimpleDateFormat("MMM d, HH:mm", LocalConfiguration.current.locales[0]).format(Date(interaction.timestamp))
+    val timeFormatted = SimpleDateFormat("МММ д, ЧЧ:мм", LocalConfiguration.current.locales[0]).format(Date(interaction.timestamp))
 
     Card(
         modifier = Modifier.fillMaxWidth()

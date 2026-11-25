@@ -48,7 +48,7 @@ fun RoutinesScreen(
             TopAppBar(
                 title = {
                     Text(
-                        text = "HABITS & ROUTINES",
+                        text = "ПРИВЫЧКИ И РАБОТ",
                         fontFamily = FontFamily.Monospace,
                         fontWeight = FontWeight.Bold,
                         color = AppTheme.colors.textPrimary,
@@ -68,11 +68,11 @@ fun RoutinesScreen(
                 actions = {
                     IconButton(onClick = {
                         viewModel.triggerDetection()
-                        Toast.makeText(context, "Scanning habit patterns...", Toast.LENGTH_SHORT).show()
+                        Toast.makeText(context, "Сканирование моделей привычек...", Toast.LENGTH_SHORT).show()
                     }) {
                         Icon(
                             imageVector = Icons.Default.Refresh,
-                            contentDescription = "Scan Habits",
+                            contentDescription = "Привычки сканирования",
                             tint = AppTheme.colors.textPrimary
                         )
                     }
@@ -95,7 +95,7 @@ fun RoutinesScreen(
             if (suggestedRoutines.isNotEmpty()) {
                 item {
                     Text(
-                        text = "DISCOVERED HABITS & SUGGESTIONS",
+                        text = "ОТКРЫТЫЕ ПРИВЫЧКИ И ПРЕДЛОЖЕНИЯ",
                         fontFamily = FontFamily.Monospace,
                         fontWeight = FontWeight.Bold,
                         color = AppTheme.colors.accentCyan,
@@ -114,7 +114,7 @@ fun RoutinesScreen(
                         },
                         onDismiss = {
                             viewModel.dismissRoutine(routine.id)
-                            Toast.makeText(context, "Suggestion dismissed", Toast.LENGTH_SHORT).show()
+                            Toast.makeText(context, "Предложение отклонено", Toast.LENGTH_SHORT).show()
                         }
                     )
                 }
@@ -153,14 +153,14 @@ fun RoutinesScreen(
                             )
                             Spacer(modifier = Modifier.height(8.dp))
                             Text(
-                                text = "No Active Routines Yet",
+                                text = "Активных программ пока нет",
                                 color = AppTheme.colors.textPrimary,
                                 fontWeight = FontWeight.Bold,
                                 fontSize = 15.sp
                             )
                             Spacer(modifier = Modifier.height(4.dp))
                             Text(
-                                text = "As you use apps like Gmail, Calendar, and Slack, OpenDroid detects repeated patterns and suggests automations here.",
+                                text = "Когда вы используете такие приложения, как Gmail, Calendar и Slack, OpenDroid обнаруживает повторяющиеся шаблоны и предлагает автоматизацию.",
                                 color = AppTheme.colors.textSecondary,
                                 fontSize = 12.sp,
                                 lineHeight = 18.sp
@@ -197,7 +197,7 @@ fun RoutinesScreen(
             // ── 3. PRE-BUILT TEMPLATES ──────────────────────────────────
             item {
                 Text(
-                    text = "SAMPLE ROUTINE TEMPLATES",
+                    text = "ПРИМЕРНЫЕ ШАБЛОНЫ ПРОЦЕДУРЫ",
                     fontFamily = FontFamily.Monospace,
                     fontWeight = FontWeight.Bold,
                     color = AppTheme.colors.textSecondary,
@@ -209,36 +209,36 @@ fun RoutinesScreen(
 
             item {
                 RoutineTemplateCard(
-                    title = "🌅 Morning Routine",
-                    description = "Read calendar → Summarize today's meetings → Check notifications → Task list → Morning briefing",
-                    trigger = "Every weekday at 9:00 AM",
+                    title = "🌅 Утренняя рутина",
+                    description = "Прочитать календарь → Подвести итоги сегодняшних встреч → Проверить уведомления → Список задач → Утренний брифинг",
+                    trigger = "Каждый будний день в 9:00.",
                     onActivate = {
                         viewModel.triggerDetection()
-                        Toast.makeText(context, "Morning Routine template activated!", Toast.LENGTH_SHORT).show()
+                        Toast.makeText(context, "Шаблон утренней рутины активирован!", Toast.LENGTH_SHORT).show()
                     }
                 )
             }
 
             item {
                 RoutineTemplateCard(
-                    title = "💼 Work Focus Routine",
-                    description = "Open Slack → Check Calendar → Read important notifications",
-                    trigger = "Every weekday at 9:30 AM",
+                    title = "💼 Программа концентрации на работе",
+                    description = "Откройте Slack → Проверить календарь → Прочтите важные уведомления.",
+                    trigger = "Каждый будний день в 9:30.",
                     onActivate = {
                         viewModel.triggerDetection()
-                        Toast.makeText(context, "Work Focus template activated!", Toast.LENGTH_SHORT).show()
+                        Toast.makeText(context, "Шаблон Work Focus активирован!", Toast.LENGTH_SHORT).show()
                     }
                 )
             }
 
             item {
                 RoutineTemplateCard(
-                    title = "🌙 Evening Wrap-up",
-                    description = "Check tomorrow's calendar → Check unread notifications → Daily summary",
-                    trigger = "Daily at 9:00 PM",
+                    title = "🌙 Подведение итогов вечера",
+                    description = "Проверить календарь на завтра → Проверить непрочитанные уведомления → Сводка за день.",
+                    trigger = "Ежедневно в 21:00",
                     onActivate = {
                         viewModel.triggerDetection()
-                        Toast.makeText(context, "Evening Wrap-up template activated!", Toast.LENGTH_SHORT).show()
+                        Toast.makeText(context, "Шаблон вечернего подведения итогов активирован!", Toast.LENGTH_SHORT).show()
                     }
                 )
             }
@@ -261,7 +261,7 @@ fun RoutinesScreen(
                             )
                             Spacer(modifier = Modifier.width(8.dp))
                             Text(
-                                text = "HABIT LEARNING ENGINE",
+                                text = "МОДУЛЬ ОБУЧЕНИЯ ПРИВЫЧЕК",
                                 fontFamily = FontFamily.Monospace,
                                 fontWeight = FontWeight.Bold,
                                 color = AppTheme.colors.textPrimary,
@@ -306,7 +306,7 @@ fun SuggestedRoutineCard(
                     shape = RoundedCornerShape(6.dp)
                 ) {
                     Text(
-                        text = "💡 ROUTINE DETECTED",
+                        text = "💡 ОБНАРУЖЕНА РАВНИЦА",
                         color = AppTheme.colors.accentCyan,
                         fontSize = 11.sp,
                         fontWeight = FontWeight.Bold,
@@ -332,7 +332,7 @@ fun SuggestedRoutineCard(
             Spacer(modifier = Modifier.height(10.dp))
 
             Text(
-                text = routine.suggestionMessage.ifBlank { "I noticed you usually do these tasks. Would you like me to automate them?" },
+                text = routine.suggestionMessage.ifBlank { "Я заметил, что ты обычно выполняешь эти задачи. Хотите, чтобы я их автоматизировал?" },
                 color = AppTheme.colors.textPrimary,
                 fontWeight = FontWeight.Bold,
                 fontSize = 15.sp,
@@ -445,7 +445,7 @@ fun SuggestedRoutineCard(
                     )
                     Spacer(modifier = Modifier.width(6.dp))
                     Text(
-                        text = "Approve & Automate",
+                        text = "Утвердить и автоматизировать",
                         color = AppTheme.colors.background,
                         fontWeight = FontWeight.Bold,
                         fontSize = 13.sp
@@ -557,7 +557,7 @@ fun ActiveRoutineCard(
                         )
                         Spacer(modifier = Modifier.width(4.dp))
                         Text(
-                            text = "Run Routine Now",
+                            text = "Запустить программу сейчас",
                             color = AppTheme.colors.accentCyan,
                             fontWeight = FontWeight.Bold,
                             fontSize = 12.sp

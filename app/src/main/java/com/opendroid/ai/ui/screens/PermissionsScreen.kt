@@ -253,14 +253,14 @@ fun PermissionsPanel(
     }
 
     if (showGrantAllConfirm) {
-        // Mirrors the Benchmark "Test all configured?" confirmation: one explicit
+        // Mirrors the Benchmark "Проверить все настроено?" confirmation: one explicit
         // Cancel/Continue gate before the single batched Android dialog fires.
         val pendingGroups = visibleCards(sdkInt)
             .filter { card -> requestPlan(snapshot.granted, sdkInt, card).isNotEmpty() }
             .map { card -> cardTitle(card) }
         AlertDialog(
             onDismissRequest = { showGrantAllConfirm = false },
-            title = { Text("Grant all permissions?") },
+            title = { Text("Предоставить все разрешения?") },
             text = {
                 Text(
                     "Android will ask for the remaining runtime permissions in one batch:\n\n" +
@@ -330,14 +330,14 @@ private fun PermissionsPanelContent(
             .padding(24.dp),
     ) {
         Text(
-            text = "Required Permissions",
+            text = "Требуемые разрешения",
             fontSize = 22.sp,
             fontWeight = FontWeight.Bold,
             color = TextPrimary,
         )
         Spacer(modifier = Modifier.height(8.dp))
         Text(
-            text = "Configure permissions below to enable full autonomous features.",
+            text = "Настройте разрешения ниже, чтобы включить полностью автономные функции.",
             fontSize = 13.sp,
             color = TextSecondary,
         )
@@ -415,7 +415,7 @@ private fun PermissionsPanelContent(
             Spacer(modifier = Modifier.height(16.dp))
             if (!allRequirementsHeld) {
                 Text(
-                    text = "You can continue now and grant the rest later in Settings → Permissions.",
+                    text = "Вы можете продолжить сейчас и предоставить остальное позже в «Настройки» → «Разрешения».",
                     fontSize = 12.sp,
                     color = TextSecondary,
                 )
@@ -434,7 +434,7 @@ private fun PermissionsPanelContent(
                 shape = RoundedCornerShape(8.dp),
             ) {
                 Text(
-                    text = "Proceed to OpenDroid Agent",
+                    text = "Перейдите к агенту OpenDroid.",
                     fontWeight = FontWeight.Bold,
                     fontSize = 16.sp,
                 )
@@ -447,7 +447,7 @@ private fun PermissionsPanelContent(
 private fun ManualSettingsHeader() {
     Column(modifier = Modifier.fillMaxWidth()) {
         Text(
-            text = "NEEDS A TRIP TO SETTINGS",
+            text = "НУЖЕН ЗАХОД В НАСТРОЙКИ",
             fontFamily = FontFamily.Monospace,
             fontWeight = FontWeight.Bold,
             fontSize = 12.sp,
@@ -730,31 +730,31 @@ private fun isAccessibilityServiceEnabled(context: Context): Boolean {
 private fun cardTitle(card: PermissionCardId): String = when (card) {
     PermissionCardId.MICROPHONE -> "Microphone"
     PermissionCardId.LOCATION -> "Location"
-    PermissionCardId.SMS_TELEPHONY -> "SMS & Telephony"
-    PermissionCardId.CONTACTS_CALENDAR -> "Contacts & Calendar"
+    PermissionCardId.SMS_TELEPHONY -> "СМС и телефония"
+    PermissionCardId.CONTACTS_CALENDAR -> "Контакты и календарь"
     PermissionCardId.CAMERA -> "Camera"
     PermissionCardId.NOTIFICATIONS -> "Notifications"
-    PermissionCardId.STORAGE -> "Storage / Workspace"
-    PermissionCardId.WRITE_SETTINGS -> "System Settings Control"
-    PermissionCardId.ACCESSIBILITY -> "Accessibility Service"
+    PermissionCardId.STORAGE -> "Хранение / Рабочее пространство"
+    PermissionCardId.WRITE_SETTINGS -> "Управление системными настройками"
+    PermissionCardId.ACCESSIBILITY -> "Служба доступности"
 }
 
 private fun cardDescription(card: PermissionCardId): String = when (card) {
-    PermissionCardId.MICROPHONE -> "Needed for wake word and speech recognition."
-    PermissionCardId.LOCATION -> "Needed to fetch weather, directions, and maps."
-    PermissionCardId.SMS_TELEPHONY -> "Needed to read and send messages, and place calls."
+    PermissionCardId.MICROPHONE -> "Необходим для пробуждения слов и распознавания речи."
+    PermissionCardId.LOCATION -> "Требуется для получения информации о погоде, направлениях и картах."
+    PermissionCardId.SMS_TELEPHONY -> "Требуется для чтения и отправки сообщений, а также совершения звонков."
     PermissionCardId.CONTACTS_CALENDAR ->
-        "Needed to resolve recipient names and manage events."
+        "Требуется для разрешения имен получателей и управления событиями."
 
-    PermissionCardId.CAMERA -> "Needed for image input and vision capabilities."
+    PermissionCardId.CAMERA -> "Необходим для ввода изображений и возможностей видения."
     PermissionCardId.NOTIFICATIONS ->
-        "Needed to post system notifications and service status."
+        "Необходимо для публикации системных уведомлений и статуса сервиса."
 
     PermissionCardId.STORAGE ->
-        "App workspace storage is ready. You can also choose a custom folder (e.g. Documents) for agent files."
+        "Хранилище рабочей области приложения готово. Вы также можете выбрать собственную папку (например, «Документы») для файлов агента."
     PermissionCardId.WRITE_SETTINGS ->
-        "Needed to adjust brightness, volume, and other system settings."
+        "Требуется для настройки яркости, громкости и других системных настроек."
 
     PermissionCardId.ACCESSIBILITY ->
-        "Enables full agent screen automation (clicks & inputs)."
+        "Включает полную автоматизацию экрана агента (клики и ввод)."
 }

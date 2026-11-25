@@ -32,9 +32,9 @@ fun getDisplayState(step: PlanStep): StepDisplayState {
     val resultText = step.result?.lowercase() ?: ""
     
     return when {
-        step.status == StepStatus.COMPLETED && (resultText.contains("auto-fixed") || resultText.contains("primary failed") || resultText.contains("repaired")) -> StepDisplayState.REPAIRED
+        step.status == StepStatus.COMPLETED && (resultText.contains("auto-fixed") || resultText.contains("первичный неудачный") || resultText.contains("repaired")) -> StepDisplayState.REPAIRED
         step.status == StepStatus.COMPLETED && resultText.contains("skipped") -> StepDisplayState.SKIPPED
-        step.status == StepStatus.FAILED && errorText.contains("is not registered in ActionDispatcher") -> StepDisplayState.AUTO_FIXING
+        step.status == StepStatus.FAILED && errorText.contains("не зарегистрирован в ActionDispatcher") -> StepDisplayState.AUTO_FIXING
         step.status == StepStatus.FAILED && errorText.contains("blocked") -> StepDisplayState.BLOCKED
         step.status == StepStatus.COMPLETED -> StepDisplayState.COMPLETED
         step.status == StepStatus.RUNNING -> StepDisplayState.RUNNING
@@ -134,7 +134,7 @@ fun PlanStepCard(
                         ) {
                             Icon(
                                 imageVector = Icons.Default.Delete,
-                                contentDescription = "Delete step",
+                                contentDescription = "Удалить шаг",
                                 tint = AccentRed,
                                 modifier = Modifier.size(16.dp)
                             )
@@ -170,7 +170,7 @@ fun PlanStepCard(
                     OutlinedTextField(
                         value = editDescription,
                         onValueChange = { editDescription = it },
-                        label = { Text("Step Description", fontSize = 11.sp) },
+                        label = { Text("Шаг Описание", fontSize = 11.sp) },
                         colors = OutlinedTextFieldDefaults.colors(
                             focusedBorderColor = AccentCyan,
                             unfocusedBorderColor = BorderColor,
@@ -238,7 +238,7 @@ fun PlanStepCard(
                     ) {
                         Icon(Icons.Default.Add, contentDescription = "Add", tint = AccentCyan, modifier = Modifier.size(14.dp))
                         Spacer(modifier = Modifier.width(4.dp))
-                        Text("Add Parameter", fontSize = 11.sp, color = AccentCyan)
+                        Text("Добавить параметр", fontSize = 11.sp, color = AccentCyan)
                     }
 
                     Spacer(modifier = Modifier.height(8.dp))
@@ -295,12 +295,12 @@ fun PlanStepCard(
 
                     if (step.canParallelize) {
                         Spacer(modifier = Modifier.height(4.dp))
-                        Text("Parallel execution supported", fontSize = 11.sp, color = AccentCyan)
+                        Text("Поддерживается параллельное выполнение", fontSize = 11.sp, color = AccentCyan)
                     }
 
                     if (step.fallback.isNotBlank()) {
                         Spacer(modifier = Modifier.height(6.dp))
-                        Text("Fallback Routine:", fontSize = 11.sp, color = TextSecondary)
+                        Text("Резервная процедура:", fontSize = 11.sp, color = TextSecondary)
                         Text(step.fallback, fontSize = 11.sp, color = TextPrimary, fontFamily = FontFamily.Monospace)
                     }
 
@@ -314,7 +314,7 @@ fun PlanStepCard(
                                 .padding(8.dp)
                         ) {
                             Column {
-                                Text("Execution Result:", fontSize = 10.sp, color = AccentCyan, fontWeight = FontWeight.Bold)
+                                Text("Результат выполнения:", fontSize = 10.sp, color = AccentCyan, fontWeight = FontWeight.Bold)
                                 Text(step.result!!, fontSize = 11.sp, color = TextPrimary)
                             }
                         }
@@ -327,7 +327,7 @@ fun PlanStepCard(
                         val errorBgColor = if (isHallucinationError) Color(0xFFFFB300).copy(alpha = 0.1f) else AccentRed.copy(alpha = 0.1f)
                         val errorBorderColor = if (isHallucinationError) Color(0xFFFFB300).copy(alpha = 0.3f) else AccentRed.copy(alpha = 0.3f)
                         val errorTitleColor = if (isHallucinationError) Color(0xFFFFB300) else AccentRed
-                        val errorTextDisplay = if (isHallucinationError) "Auto-fixing: The requested system action is currently being recovered and updated by the OpenDroid Repair Engine." else step.error!!
+                        val errorTextDisplay = if (isHallucinationError) "Автоматическое исправление: запрошенное системное действие в настоящее время восстанавливается и обновляется с помощью OpenDroid Repair Engine." else step.error!!
 
                         Box(
                             modifier = Modifier
@@ -339,7 +339,7 @@ fun PlanStepCard(
                         ) {
                             Column {
                                 Text(
-                                    text = if (isHallucinationError) "Repair Phase Active" else "Execution Error:",
+                                    text = if (isHallucinationError) "Фаза ремонта активна" else "Ошибка выполнения:",
                                     fontSize = 10.sp,
                                     color = errorTitleColor,
                                     fontWeight = FontWeight.Bold

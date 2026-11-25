@@ -48,8 +48,8 @@ fun SocialCampaignsTab(
                 verticalAlignment = Alignment.CenterVertically
             ) {
                 Column {
-                    Text("Campaign Strategies", color = theme.textPrimary, fontWeight = FontWeight.Bold, fontSize = 16.sp)
-                    Text("Multi-day coordinated cross-platform campaigns", color = theme.textSecondary, fontSize = 11.sp)
+                    Text("Стратегии кампании", color = theme.textPrimary, fontWeight = FontWeight.Bold, fontSize = 16.sp)
+                    Text("Многодневные скоординированные кроссплатформенные кампании", color = theme.textSecondary, fontSize = 11.sp)
                 }
 
                 Button(
@@ -60,7 +60,7 @@ fun SocialCampaignsTab(
                 ) {
                     Icon(Icons.Default.Add, contentDescription = null, tint = Color.Black, modifier = Modifier.size(16.dp))
                     Spacer(modifier = Modifier.width(4.dp))
-                    Text("New Campaign", color = Color.Black, fontSize = 11.sp, fontWeight = FontWeight.Bold)
+                    Text("Новая кампания", color = Color.Black, fontSize = 11.sp, fontWeight = FontWeight.Bold)
                 }
             }
         }
@@ -86,14 +86,14 @@ fun SocialCampaignsTab(
                         }
                         Spacer(modifier = Modifier.height(14.dp))
                         Text(
-                            "No Campaigns Created Yet",
+                            "Кампаний пока не создано",
                             color = theme.textPrimary,
                             fontWeight = FontWeight.Bold,
                             fontSize = 15.sp
                         )
                         Spacer(modifier = Modifier.height(6.dp))
                         Text(
-                            "Launch an AI-generated multi-day marketing campaign with teaser, release, and follow-up posts scheduled automatically across your platforms.",
+                            "Запустите многодневную маркетинговую кампанию, созданную искусственным интеллектом, с тизерами, выпусками и последующими публикациями, которые автоматически планируются на ваших платформах.",
                             color = theme.textSecondary,
                             fontSize = 12.sp,
                             lineHeight = 16.sp,
@@ -107,7 +107,7 @@ fun SocialCampaignsTab(
                         ) {
                             Icon(Icons.Default.AutoAwesome, contentDescription = null, tint = Color.Black, modifier = Modifier.size(16.dp))
                             Spacer(modifier = Modifier.width(6.dp))
-                            Text("Generate First Campaign", color = Color.Black, fontWeight = FontWeight.Bold, fontSize = 12.sp)
+                            Text("Создать первую кампанию", color = Color.Black, fontWeight = FontWeight.Bold, fontSize = 12.sp)
                         }
                     }
                 }
@@ -183,7 +183,7 @@ private fun CampaignCard(campaign: SocialCampaign) {
                 horizontalArrangement = Arrangement.SpaceBetween,
                 verticalAlignment = Alignment.CenterVertically
             ) {
-                Text("Timeline Progress", color = theme.textSecondary, fontSize = 10.sp)
+                Text("Хронология прогресса", color = theme.textSecondary, fontSize = 10.sp)
                 Text("${(progress * 100).toInt()}%", color = theme.accentCyan, fontSize = 10.sp, fontWeight = FontWeight.Bold)
             }
 
@@ -270,7 +270,7 @@ private fun CreateCampaignDialog(
             Row(verticalAlignment = Alignment.CenterVertically) {
                 Icon(Icons.Default.AutoAwesome, contentDescription = null, tint = theme.accentCyan, modifier = Modifier.size(20.dp))
                 Spacer(modifier = Modifier.width(8.dp))
-                Text("AI Campaign Generator", color = theme.textPrimary, fontWeight = FontWeight.Bold, fontSize = 16.sp)
+                Text("Генератор ИИ-кампаний", color = theme.textPrimary, fontWeight = FontWeight.Bold, fontSize = 16.sp)
             }
         },
         text = {
@@ -281,8 +281,8 @@ private fun CreateCampaignDialog(
                 OutlinedTextField(
                     value = name,
                     onValueChange = { name = it },
-                    label = { Text("Campaign Name", fontSize = 12.sp) },
-                    placeholder = { Text("e.g. OpenDroid v2.0 Global Launch", fontSize = 11.sp) },
+                    label = { Text("Название кампании", fontSize = 12.sp) },
+                    placeholder = { Text("например Глобальный запуск OpenDroid v2.0", fontSize = 11.sp) },
                     singleLine = true,
                     modifier = Modifier.fillMaxWidth(),
                     colors = OutlinedTextFieldDefaults.colors(
@@ -296,8 +296,8 @@ private fun CreateCampaignDialog(
                 OutlinedTextField(
                     value = objective,
                     onValueChange = { objective = it },
-                    label = { Text("Campaign Objective & Goals", fontSize = 12.sp) },
-                    placeholder = { Text("e.g. Highlight on-device privacy, fast responsiveness, and attract open source developers.", fontSize = 11.sp) },
+                    label = { Text("Цель и задачи кампании", fontSize = 12.sp) },
+                    placeholder = { Text("например Подчеркните конфиденциальность на устройстве, быстрое реагирование и привлеките разработчиков с открытым исходным кодом.", fontSize = 11.sp) },
                     modifier = Modifier.fillMaxWidth().height(90.dp),
                     colors = OutlinedTextFieldDefaults.colors(
                         focusedTextColor = theme.textPrimary,
@@ -322,7 +322,7 @@ private fun CreateCampaignDialog(
                     }
                 }
 
-                Text("Target Platforms:", color = theme.textPrimary, fontSize = 12.sp, fontWeight = FontWeight.SemiBold)
+                Text("Целевые платформы:", color = theme.textPrimary, fontSize = 12.sp, fontWeight = FontWeight.SemiBold)
                 LazyRow(horizontalArrangement = Arrangement.spacedBy(6.dp)) {
                     items(SocialPlatform.values()) { platform ->
                         val isSelected = selectedPlatforms.contains(platform)
@@ -354,7 +354,7 @@ private fun CreateCampaignDialog(
                 if (isGenerating) {
                     CircularProgressIndicator(modifier = Modifier.size(16.dp), color = Color.Black, strokeWidth = 2.dp)
                 } else {
-                    Text("Generate Strategy", color = Color.Black, fontWeight = FontWeight.Bold)
+                    Text("Создать стратегию", color = Color.Black, fontWeight = FontWeight.Bold)
                 }
             }
         },

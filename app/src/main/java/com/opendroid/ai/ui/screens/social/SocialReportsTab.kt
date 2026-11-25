@@ -38,16 +38,16 @@ fun SocialReportsTab(
 ) {
     val context = LocalContext.current
     val theme = AppTheme.colors
-    val timeFormat = SimpleDateFormat("MMM d, yyyy", LocalConfiguration.current.locales[0])
+    val timeFormat = SimpleDateFormat("МММ д, гггг", LocalConfiguration.current.locales[0])
 
     val dateRange = if (weeklyReport != null) {
         "${timeFormat.format(Date(weeklyReport.startDate))} – ${timeFormat.format(Date(weeklyReport.endDate))}"
     } else {
-        "Current Week"
+        "Текущая неделя"
     }
 
     val reportText = buildString {
-        appendLine("📊 OPENDROID SOCIAL EXECUTIVE REPORT")
+        appendLine("📊 СОЦИАЛЬНЫЙ ОТЧЕТ OPENDROID")
         appendLine("Period: $dateRange")
         appendLine("──────────────────────────────────────────")
         weeklyReport?.let { r ->
@@ -56,10 +56,10 @@ fun SocialReportsTab(
             appendLine("• Average Engagement: ${r.averageEngagementRate}%")
             appendLine("• Follower Growth: +${r.totalFollowersDelta}")
             appendLine("──────────────────────────────────────────")
-            appendLine("Executive Summary:")
+            appendLine("Резюме:")
             appendLine(r.aiSummary)
             appendLine("──────────────────────────────────────────")
-            appendLine("AI Strategic Recommendations:")
+            appendLine("Стратегические рекомендации ИИ:")
             r.recommendations.forEachIndexed { i, rec ->
                 appendLine("${i + 1}. $rec")
             }
@@ -86,7 +86,7 @@ fun SocialReportsTab(
                         verticalAlignment = Alignment.CenterVertically
                     ) {
                         Column {
-                            Text("Executive Weekly Report", color = theme.textPrimary, fontWeight = FontWeight.Bold, fontSize = 16.sp)
+                            Text("Исполнительный еженедельный отчет", color = theme.textPrimary, fontWeight = FontWeight.Bold, fontSize = 16.sp)
                             Text(dateRange, color = theme.accentCyan, fontSize = 11.sp, fontWeight = FontWeight.SemiBold)
                         }
 
@@ -108,9 +108,9 @@ fun SocialReportsTab(
                         OutlinedButton(
                             onClick = {
                                 val clipboard = context.getSystemService(Context.CLIPBOARD_SERVICE) as ClipboardManager
-                                val clip = ClipData.newPlainText("Social Report", reportText)
+                                val clip = ClipData.newPlainText("Социальный отчет", reportText)
                                 clipboard.setPrimaryClip(clip)
-                                Toast.makeText(context, "Report copied to clipboard", Toast.LENGTH_SHORT).show()
+                                Toast.makeText(context, "Отчет скопирован в буфер обмена", Toast.LENGTH_SHORT).show()
                             },
                             modifier = Modifier.weight(1f),
                             shape = RoundedCornerShape(12.dp),
@@ -128,7 +128,7 @@ fun SocialReportsTab(
                                     putExtra(Intent.EXTRA_TEXT, reportText)
                                     type = "text/plain"
                                 }
-                                context.startActivity(Intent.createChooser(shareIntent, "Share Social Report"))
+                                context.startActivity(Intent.createChooser(shareIntent, "Поделиться социальным отчетом"))
                             },
                             modifier = Modifier.weight(1f),
                             shape = RoundedCornerShape(12.dp),
@@ -136,7 +136,7 @@ fun SocialReportsTab(
                         ) {
                             Icon(Icons.Default.Share, contentDescription = null, tint = Color.Black, modifier = Modifier.size(14.dp))
                             Spacer(modifier = Modifier.width(6.dp))
-                            Text("Share Report", color = Color.Black, fontSize = 12.sp, fontWeight = FontWeight.Bold)
+                            Text("Поделиться отчетом", color = Color.Black, fontSize = 12.sp, fontWeight = FontWeight.Bold)
                         }
                     }
                 }
@@ -152,10 +152,10 @@ fun SocialReportsTab(
                 colors = CardDefaults.cardColors(containerColor = theme.cardBackground)
             ) {
                 Column(modifier = Modifier.padding(16.dp)) {
-                    Text("Executive Overview", color = theme.textPrimary, fontWeight = FontWeight.Bold, fontSize = 14.sp)
+                    Text("Исполнительный обзор", color = theme.textPrimary, fontWeight = FontWeight.Bold, fontSize = 14.sp)
                     Spacer(modifier = Modifier.height(8.dp))
                     Text(
-                        weeklyReport?.aiSummary ?: "Data is being aggregated from connected platforms. Insights will refresh automatically as activity logs accrue.",
+                        weeklyReport?.aiSummary ?: "Данные собираются с подключенных платформ. Аналитика будет обновляться автоматически по мере накопления журналов активности.",
                         color = theme.textSecondary,
                         fontSize = 12.sp,
                         lineHeight = 18.sp
@@ -176,15 +176,15 @@ fun SocialReportsTab(
                     Row(verticalAlignment = Alignment.CenterVertically) {
                         Icon(Icons.Default.Lightbulb, contentDescription = null, tint = theme.accentCyan, modifier = Modifier.size(16.dp))
                         Spacer(modifier = Modifier.width(8.dp))
-                        Text("Actionable Recommendations", color = theme.textPrimary, fontWeight = FontWeight.Bold, fontSize = 14.sp)
+                        Text("Практические рекомендации", color = theme.textPrimary, fontWeight = FontWeight.Bold, fontSize = 14.sp)
                     }
 
                     Spacer(modifier = Modifier.height(12.dp))
 
                     val recs = weeklyReport?.recommendations ?: listOf(
-                        "Increase X posting frequency between 14:00 - 17:00 UTC for optimal developer engagement.",
-                        "Publish community updates to Telegram 15 minutes before global platform posts.",
-                        "Add explicit Call-To-Action buttons on high-performing announcements to drive GitHub stars."
+                        "Увеличьте частоту публикаций X с 14:00 до 17:00 UTC для оптимального взаимодействия с разработчиками.",
+                        "Публикуйте обновления сообщества в Telegram за 15 минут до публикации сообщений на глобальной платформе.",
+                        "Добавляйте явные кнопки призыва к действию в высокоэффективные объявления, чтобы привлечь звезд GitHub."
                     )
 
                     recs.forEachIndexed { index, rec ->
@@ -221,10 +221,10 @@ fun SocialReportsTab(
                 colors = CardDefaults.cardColors(containerColor = theme.cardBackground)
             ) {
                 Column(modifier = Modifier.padding(14.dp)) {
-                    Text("Grounded Insights Verification", color = theme.textPrimary, fontWeight = FontWeight.SemiBold, fontSize = 13.sp)
+                    Text("Обоснованная проверка знаний", color = theme.textPrimary, fontWeight = FontWeight.SemiBold, fontSize = 13.sp)
                     Spacer(modifier = Modifier.height(4.dp))
                     Text(
-                        "OpenDroid strictly distinguishes between Observed Metrics, Calculated Insights, and Strategic Suggestions to eliminate hallucinations.",
+                        "OpenDroid строго различает наблюдаемые показатели, расчетные выводы и стратегические предложения для устранения галлюцинаций.",
                         color = theme.textSecondary,
                         fontSize = 11.sp,
                         lineHeight = 15.sp

@@ -46,8 +46,8 @@ fun SocialSettingsTab(
         // ── 1. AUTOMATION LEVEL SELECTOR ─────────────────────────────
         item {
             Column(verticalArrangement = Arrangement.spacedBy(6.dp)) {
-                Text("Automation Guardrails", color = theme.textPrimary, fontWeight = FontWeight.Bold, fontSize = 16.sp)
-                Text("Configure autonomy boundaries and approval workflows.", color = theme.textSecondary, fontSize = 11.sp)
+                Text("Автоматизация ограждений", color = theme.textPrimary, fontWeight = FontWeight.Bold, fontSize = 16.sp)
+                Text("Настройте границы автономии и рабочие процессы утверждения.", color = theme.textSecondary, fontSize = 11.sp)
             }
         }
 
@@ -55,24 +55,24 @@ fun SocialSettingsTab(
             Column(verticalArrangement = Arrangement.spacedBy(10.dp)) {
                 AutomationLevelCard(
                     level = AutomationLevel.SAFE,
-                    title = "Safe Mode (Draft Only)",
-                    subtitle = "AI creates drafts only. Every post, schedule, and reply requires explicit user confirmation.",
+                    title = "Безопасный режим (только черновик)",
+                    subtitle = "ИИ создает только черновики. Каждое сообщение, расписание и ответ требуют явного подтверждения пользователя.",
                     isSelected = currentLevel == AutomationLevel.SAFE,
                     onSelect = { onSelectLevel(AutomationLevel.SAFE) }
                 )
 
                 AutomationLevelCard(
                     level = AutomationLevel.APPROVAL,
-                    title = "Approval Required (Balanced)",
-                    subtitle = "Low-risk comments and routine summaries run autonomously. All new posts and sensitive replies require your approval.",
+                    title = "Требуется одобрение (сбалансированный)",
+                    subtitle = "Комментарии с низким уровнем риска и рутинные сводки выполняются автономно. Все новые сообщения и деликатные ответы требуют вашего одобрения.",
                     isSelected = currentLevel == AutomationLevel.APPROVAL,
                     onSelect = { onSelectLevel(AutomationLevel.APPROVAL) }
                 )
 
                 AutomationLevelCard(
                     level = AutomationLevel.AUTONOMOUS,
-                    title = "Autonomous Mode (Full Agent)",
-                    subtitle = "Approved campaigns, scheduled queue, and high-confidence comment replies publish automatically based on rules.",
+                    title = "Автономный режим (Полный агент)",
+                    subtitle = "Утвержденные кампании, запланированная очередь и ответы на комментарии с высоким уровнем конфиденциальности публикуются автоматически в соответствии с правилами.",
                     isSelected = currentLevel == AutomationLevel.AUTONOMOUS,
                     onSelect = { onSelectLevel(AutomationLevel.AUTONOMOUS) }
                 )
@@ -87,8 +87,8 @@ fun SocialSettingsTab(
                 verticalAlignment = Alignment.CenterVertically
             ) {
                 Column {
-                    Text("Custom Automation Rules", color = theme.textPrimary, fontWeight = FontWeight.Bold, fontSize = 16.sp)
-                    Text("Custom trigger criteria and confidence gates", color = theme.textSecondary, fontSize = 11.sp)
+                    Text("Пользовательские правила автоматизации", color = theme.textPrimary, fontWeight = FontWeight.Bold, fontSize = 16.sp)
+                    Text("Пользовательские критерии триггера и доверительные интервалы", color = theme.textSecondary, fontSize = 11.sp)
                 }
 
                 Button(
@@ -113,7 +113,7 @@ fun SocialSettingsTab(
                     colors = CardDefaults.cardColors(containerColor = theme.cardBackground)
                 ) {
                     Box(modifier = Modifier.fillMaxWidth().padding(20.dp), contentAlignment = Alignment.Center) {
-                        Text("No custom rules defined yet. Default guardrails are active.", color = theme.textSecondary, fontSize = 12.sp)
+                        Text("Пользовательские правила еще не определены. Ограждения по умолчанию активны.", color = theme.textSecondary, fontSize = 12.sp)
                     }
                 }
             }
@@ -130,8 +130,8 @@ fun SocialSettingsTab(
         // ── 3. KEYSTORE ENCRYPTION & AUDIT LOG ───────────────────────
         item {
             Column(verticalArrangement = Arrangement.spacedBy(6.dp)) {
-                Text("Security & Audit Trail", color = theme.textPrimary, fontWeight = FontWeight.Bold, fontSize = 16.sp)
-                Text("Hardware-isolated cryptographic logs and agent activity", color = theme.textSecondary, fontSize = 11.sp)
+                Text("Безопасность и аудит", color = theme.textPrimary, fontWeight = FontWeight.Bold, fontSize = 16.sp)
+                Text("Аппаратно-изолированные криптографические журналы и активность агентов", color = theme.textSecondary, fontSize = 11.sp)
             }
         }
 
@@ -151,8 +151,8 @@ fun SocialSettingsTab(
                     }
                     Spacer(modifier = Modifier.width(12.dp))
                     Column {
-                        Text("Android KeyStore Protected", color = theme.textPrimary, fontWeight = FontWeight.SemiBold, fontSize = 13.sp)
-                        Text("AES-256-GCM AEAD encrypted. Strict zero-plaintext policy.", color = theme.textSecondary, fontSize = 11.sp)
+                        Text("Хранилище ключей Android защищено", color = theme.textPrimary, fontWeight = FontWeight.SemiBold, fontSize = 13.sp)
+                        Text("Зашифровано AES-256-GCM AEAD. Строгая политика отсутствия открытого текста.", color = theme.textSecondary, fontSize = 11.sp)
                     }
                 }
             }
@@ -160,7 +160,7 @@ fun SocialSettingsTab(
 
         if (auditLogs.isEmpty()) {
             item {
-                Text("No recent audit log entries.", color = theme.textSecondary, fontSize = 12.sp)
+                Text("Нет последних записей в журнале аудита.", color = theme.textSecondary, fontSize = 12.sp)
             }
         } else {
             items(auditLogs.take(10), key = { it.id }) { log ->
@@ -276,7 +276,7 @@ private fun RuleCard(
             Spacer(modifier = Modifier.height(6.dp))
             Row(modifier = Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.End) {
                 Text(
-                    "Delete Rule",
+                    "Удалить правило",
                     color = theme.accentRed,
                     fontSize = 11.sp,
                     modifier = Modifier.clickable { onDelete() }
@@ -289,7 +289,7 @@ private fun RuleCard(
 @Composable
 private fun AuditLogItem(log: SocialAuditEntry) {
     val theme = AppTheme.colors
-    val timeFormat = SimpleDateFormat("MMM d, HH:mm:ss", LocalConfiguration.current.locales[0])
+    val timeFormat = SimpleDateFormat("МММ д, ЧЧ:мм:сс", LocalConfiguration.current.locales[0])
 
     Card(
         modifier = Modifier.fillMaxWidth()
@@ -337,14 +337,14 @@ private fun AddRuleDialog(
     AlertDialog(
         onDismissRequest = onDismiss,
         containerColor = theme.cardBackground,
-        title = { Text("Add Automation Rule", color = theme.textPrimary, fontWeight = FontWeight.Bold) },
+        title = { Text("Добавить правило автоматизации", color = theme.textPrimary, fontWeight = FontWeight.Bold) },
         text = {
             Column(verticalArrangement = Arrangement.spacedBy(10.dp)) {
                 OutlinedTextField(
                     value = ruleName,
                     onValueChange = { ruleName = it },
                     label = { Text("Rule Name", fontSize = 12.sp) },
-                    placeholder = { Text("e.g. Auto reply to positive comments", fontSize = 11.sp) },
+                    placeholder = { Text("например Автоматический ответ на положительные комментарии", fontSize = 11.sp) },
                     singleLine = true,
                     modifier = Modifier.fillMaxWidth(),
                     colors = OutlinedTextFieldDefaults.colors(
