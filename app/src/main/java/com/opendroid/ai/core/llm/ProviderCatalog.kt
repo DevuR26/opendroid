@@ -45,7 +45,21 @@ object ProviderCatalog {
         ProviderSpec(LEGACY_ON_DEVICE, "gemma-4-on-device", ON_DEVICE)
     )
 
-    private val byExternalName = providers.associateBy { it.displayName }
+    // The Russian UI was translated by replacing literals, so taps pass localized
+    // display strings here. Keep them as aliases instead of letting them crash
+    // LLMConfig.withActiveProvider() with "Unknown LLM provider".
+    private val localizedAliases = listOf(
+        ProviderSpec("Гугл Близнецы", "gemini-2.5-flash", "Google Gemini"),
+        ProviderSpec("Антропный Клод", ClaudeModelCatalog.defaultModelId, "Anthropic Claude"),
+        ProviderSpec("Мистраль ИИ", "mistral-large-latest", "Mistral AI"),
+        ProviderSpec("Вместе ИИ", "meta-llama/Llama-3-70b-chat-hf", "Together AI"),
+        ProviderSpec("API второго пилота", "gpt-4o", "Copilot API"),
+        ProviderSpec("Пользовательская совместимость с OpenAI", "custom-model", "Custom OpenAI Compatible"),
+        ProviderSpec("ИИ на устройстве", "gemma-4-on-device", ON_DEVICE),
+        ProviderSpec("Джемма 4 (на устройстве)", "gemma-4-on-device", ON_DEVICE)
+    )
+
+    private val byExternalName = (providers + localizedAliases).associateBy { it.displayName }
     private val byCanonicalName = providers.associateBy { it.canonicalName }
 
     fun canonicalName(providerName: String): String =

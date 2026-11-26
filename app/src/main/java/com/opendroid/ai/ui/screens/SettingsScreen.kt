@@ -42,6 +42,7 @@ import com.opendroid.ai.data.models.resolvedAutoMode
 import com.opendroid.ai.data.models.resolvedOllamaTimeoutSeconds
 import com.opendroid.ai.core.llm.OnDeviceModelRegistry
 import com.opendroid.ai.core.llm.OnDeviceBackend
+import com.opendroid.ai.core.llm.ProviderCatalog
 import com.opendroid.ai.core.llm.ConnectionTestState
 import com.opendroid.ai.core.llm.error.LLMError
 import com.opendroid.ai.core.security.ProviderCredentialRecoveryState
@@ -729,7 +730,7 @@ fun SettingsScreen(
             }
 
             // On-Device AI Status Card (Visible when On-Device AI or legacy Gemma provider is selected)
-            if (config.activeProvider == "ИИ на устройстве" || config.activeProvider == "Джемма 4 (на устройстве)") {
+            if (ProviderCatalog.isOnDevice(config.activeProvider)) {
                 item {
                     Card(
                         modifier = Modifier
